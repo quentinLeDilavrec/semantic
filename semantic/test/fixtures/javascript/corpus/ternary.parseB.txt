@@ -1,0 +1,29 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (AssignmentExpression 
+          (MemberExpression 
+            (PropertyIdentifier "y") 
+            (Expression 
+              (Identifier "x"))) 
+          (Expression 
+            (TernaryExpression 
+              (Expression 
+                (MemberExpression 
+                  (PropertyIdentifier "case") 
+                  (Expression 
+                    (MemberExpression 
+                      (PropertyIdentifier "other") 
+                      (Expression 
+                        (Identifier "some")))))) 
+              (Expression 
+                (MemberExpression 
+                  (PropertyIdentifier "case") 
+                  (Expression 
+                    (Identifier "some")))) 
+              (Expression 
+                (MemberExpression 
+                  (PropertyIdentifier "condition") 
+                  (Expression 
+                    (Identifier "some")))))))))))

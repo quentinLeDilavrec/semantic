@@ -1,0 +1,11 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Subscript 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a"))) 
+            (PrimaryExpression 
+              (Identifier "b"))))))))

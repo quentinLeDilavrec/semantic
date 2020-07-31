@@ -1,0 +1,13 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (Lambda 
+          (Expression 
+            (PrimaryExpression 
+              (BinaryOperator 
+                (Token) 
+                (PrimaryExpression 
+                  (Integer "1")) 
+                (PrimaryExpression 
+                  (Integer "1"))))))))))

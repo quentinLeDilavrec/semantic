@@ -1,0 +1,9 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Method 
+          (MethodName 
+            (Identifier "foo")) 
+          (MethodParameters 
+            (Identifier "a")))))))

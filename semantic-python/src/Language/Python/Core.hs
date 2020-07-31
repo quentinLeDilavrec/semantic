@@ -1,6 +1,23 @@
-{-# LANGUAGE ConstraintKinds, DataKinds, DefaultSignatures, DisambiguateRecordFields, FlexibleContexts,
-             GeneralizedNewtypeDeriving, KindSignatures, LambdaCase, NamedFieldPuns, OverloadedLists,
-             OverloadedStrings, PatternSynonyms, StandaloneDeriving, TypeApplications, TypeOperators, ViewPatterns #-}
+{-# LANGUAGE ConstraintKinds #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DefaultSignatures #-}
+{-# LANGUAGE DisambiguateRecordFields #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedLists #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE PatternSynonyms #-}
+{-# LANGUAGE StandaloneDeriving #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE ViewPatterns #-}
+
+-- NOTE: This file needs to be updated to accommodate new AST shapes.
+-- A portion of instances have been updated to include the Err functor;
+-- remaining instances are to be updated once this is stable.
 
 module Language.Python.Core
 ( toplevelCompile
@@ -10,20 +27,22 @@ module Language.Python.Core
 import Prelude hiding (fail)
 
 import           AST.Element
-import           Control.Effect hiding ((:+:))
+import           Control.Algebra hiding ((:+:))
 import           Control.Effect.Reader
-import           Control.Monad.Fail
 import           Core.Core as Core
 import           Core.Name as Name
 import           Data.Coerce
 import           Data.Foldable
 import           Data.Function
 import           Data.List.NonEmpty (NonEmpty (..))
+import           Data.Maybe
 import           GHC.Records
+import qualified Language.Python.AST as Py
+import           Language.Python.Failure
+import           Language.Python.Patterns
 import           Source.Span (Span)
 import           Syntax.Stack (Stack (..))
 import qualified Syntax.Stack as Stack
-import qualified TreeSitter.Python.AST as Py
 
 -- | Keeps track of the current scope's bindings (so that we can, when
 -- compiling a class or module, return the list of bound variables as
@@ -34,45 +53,31 @@ newtype Bindings = Bindings { unBindings :: Stack Name }
 def :: Name -> Bindings -> Bindings
 def n = coerce (Stack.:> n)
 
--- | Useful pattern synonym for extracting a single identifier from
--- a Python ExpressionList. Easier than pattern-matching every time.
--- TODO: when this is finished, we won't need this pattern, as we'll
--- handle ExpressionLists the smart way every time.
-pattern SingleIdentifier :: Name -> Py.ExpressionList a
-pattern SingleIdentifier name <- Py.ExpressionList
-  { Py.extraChildren =
-    [ Py.Expression (Prj (Py.PrimaryExpression (Prj Py.Identifier { text = Name -> name })))
-    ]
-  }
+prelude :: Has Core sig t => [Name] -> t Name
+prelude = foldl' (...) (pure "__semantic_prelude")
 
 -- We leave the representation of Core syntax abstract so that it's not
 -- possible for us to 'cheat' by pattern-matching on or eliminating a
 -- compiled term.
-type CoreSyntax sig t = ( Member Core sig
-                        , Member (Ann Span) sig
-                        , Carrier sig t
+type CoreSyntax sig t = ( Has Core sig t
+                        , Has (Ann Span) sig t
+                        , Has Failure sig t
                         , Foldable t
                         )
 
 class Compile (py :: * -> *) where
-  -- FIXME: rather than failing the compilation process entirely
-  -- with MonadFail, we should emit core that represents failure
   compile :: ( CoreSyntax syn t
-             , Member (Reader Bindings) sig
-             , Carrier sig m
-             , MonadFail m
+             , Has (Reader Bindings) sig m
              )
           => py Span
           -> (t Name -> m (t Name))
           -> (t Name -> m (t Name))
 
-  default compile :: (MonadFail m, Show (py Span)) => py Span -> (t Name -> m (t Name)) -> (t Name -> m (t Name))
+  default compile :: (Applicative m, Has Failure syn t, Show (py Span)) => py Span -> (t Name -> m (t Name)) -> (t Name -> m (t Name))
   compile a _ _ = defaultCompile a
 
 toplevelCompile :: ( CoreSyntax syn t
-                   , Member (Reader Bindings) sig
-                   , Carrier sig m
-                   , MonadFail m
+                   , Has (Reader Bindings) sig m
                    )
                 => Py.Module Span
                 -> m (t Name)
@@ -80,7 +85,7 @@ toplevelCompile py = compile py pure none
 
 -- | TODO: This is not right, it should be a reference to a Preluded
 -- NoneType instance, but it will do for now.
-none :: (Member Core sig, Carrier sig t) => t Name
+none :: Has Core sig t => t Name
 none = unit
 
 locate :: ( HasField "ann" syntax Span
@@ -91,8 +96,8 @@ locate :: ( HasField "ann" syntax Span
        -> t a
 locate syn  = Core.annAt (getField @"ann" syn)
 
-defaultCompile :: (MonadFail m, Show py) => py -> m (t Name)
-defaultCompile t = fail $ "compilation unimplemented for " <> show t
+defaultCompile :: (Applicative m, Has Failure syn t, Show py) => py -> m (t Name)
+defaultCompile = pure . unimplemented
 
 
 instance (Compile l, Compile r) => Compile (l :+: r) where
@@ -128,15 +133,14 @@ data Located a = Located Span a
 -- Desugaring an RHS involves walking as deeply as possible into an
 -- assignment, storing the names we encounter as we go and eventually
 -- returning a terminal expression. We have to keep track of which
-desugar :: MonadFail m
-        => [Located Name]
+desugar :: [Located Name]
         -> RHS Span
-        -> m ([Located Name], Desugared Span)
+        -> Either String ([Located Name], Desugared Span)
 desugar acc = \case
   Prj Py.Assignment { left = SingleIdentifier name, right = Just rhs, ann} ->
     desugar (Located ann name : acc) rhs
   R1 any -> pure (acc, any)
-  other -> fail ("desugar: couldn't desugar RHS " <> show other)
+  other -> Left ("desugar: couldn't desugar RHS " <> show other)
 
 -- This is an algebra that is invoked from a left fold but that
 -- returns a function (the 'difference' pattern) so that we can pass
@@ -145,7 +149,7 @@ desugar acc = \case
 -- returns a function). There's some pun to be made on "collapsing
 -- sugar", like "icing" or "sugar water" but I'll leave that as an
 -- exercise to the reader.
-collapseDesugared :: (CoreSyntax syn t, Member (Reader Bindings) sig, Carrier sig m)
+collapseDesugared :: (CoreSyntax syn t, Has (Reader Bindings) sig m)
                   => Located Name           -- The current LHS to which to assign
                   -> (t Name -> m (t Name)) -- A meta-continuation: it takes a name and returns a continuation
                   -> t Name                 -- The current RHS to which to assign, yielded from an outer continuation
@@ -159,11 +163,13 @@ instance Compile Py.Assignment where
     { left = SingleIdentifier name
     , right = Just rhs
     , ann
-    } cc next = do
-    (names, val) <- desugar [Located ann name] rhs
-    compile val pure next >>= foldr collapseDesugared cc names >>= pure . locate it
+    } cc next = case desugar [Located ann name] rhs of
+      Right (names, val) -> compile val pure next >>= foldr collapseDesugared cc names >>= pure . locate it
+      Left msg           -> pure $ unimplemented msg
 
-  compile other _ _ = fail ("Unhandled assignment case: " <> show other)
+
+
+  compile other _ _ = pure $ invariantViolated ("Unhandled assignment case: " <> show other)
 
 -- End assignment compilation
 
@@ -187,27 +193,28 @@ instance Compile Py.Call where
     func <- compile function pure next
     let compileArg = \case
           Prj expr -> compile (expr :: Py.Expression Span) pure next
-          other   -> fail ("Can't compile non-expression function argument: " <> show other)
+          other    -> pure . invariantViolated $ "Can't compile non-expression function argument: " <> show other
 
     -- Python function arguments are defined to evaluate left to right.
     args <- traverse compileArg args
     locate it (func $$* args) & cc
-  compile it _ _ = fail ("can't compile Call node with generator expression: " <> show it)
+  compile it _ _ = pure . invariantViolated $ "can't compile Call node with generator expression: " <> show it
 
 instance Compile Py.ClassDefinition where
-  compile it@Py.ClassDefinition { body = pybody, name = Py.Identifier _ann (Name -> n) } cc next = do
+  compile it@Py.ClassDefinition { body = pybody, name = Py.Identifier _ann (Name.name -> n) } cc next = do
     let buildTypeCall _ = do
           bindings <- asks @Bindings (toList . unBindings)
           let buildName n = (n, pure n)
               contents = record . fmap buildName $ bindings
-              typefn = pure "__semantic_prelude" ... "type"
-              object = pure "__semantic_prelude" ... "object"
+              typefn = prelude ["type"]
+              object = prelude ["object"]
 
-          pure (typefn $$ Core.string (coerce n) $$ object $$ contents)
+          pure (typefn $$ Core.string (formatName n) $$ object $$ contents)
 
     body <- compile pybody buildTypeCall next
-    let assignClass = Name.named' n :<- body
-    let continuing = fmap (locate it . (assignClass >>>=))
+    let coreName = Name.named' n
+        assignClass = coreName :<- rec coreName body
+        continuing = fmap (locate it . (assignClass >>>=))
     continuing (local (def n) (cc next))
 
 instance Compile Py.ComparisonOperator
@@ -224,12 +231,15 @@ instance Compile Py.DecoratedDefinition where
     , extraChildren = [ Py.Decorator { extraChildren } ]
     } cc next = do
     let thenReassign item = do
-          _ :> lastbound <- asks unBindings
-          tocall <- compile extraChildren pure next
-          let callit go = (pure lastbound .= (tocall $$ pure lastbound)) >>> go
-          fmap callit (cc item)
+          bindings <- asks unBindings
+          case bindings of
+            _ :> lastbound -> do
+              tocall <- compile extraChildren pure next
+              let callit go = (pure lastbound .= (tocall $$ pure lastbound)) >>> go
+              fmap callit (cc item)
+            _ -> pure . invariantViolated $ "Encountered a decorated definition without a corresponding function"
     locate it <$> compile definition thenReassign next
-  compile it _ _ = fail ("Can't figure out decorated definition " <> show it)
+  compile it _ _ = pure . invariantViolated $ "Can't figure out decorated definition " <> show it
 instance Compile Py.DeleteStatement
 instance Compile Py.Dictionary
 instance Compile Py.DictionaryComprehension
@@ -238,8 +248,8 @@ instance Compile Py.DottedName where
   compile it@Py.DottedName
     { extraChildren = Py.Identifier { text } :| rest
     } cc _next = do
-    let aggregate Py.Identifier { text = inner } x = x ... Name inner
-        composite = foldr aggregate (pure (Name text)) rest
+    let aggregate Py.Identifier { text = inner } x = x ... Name.name inner
+        composite = foldr aggregate (pure (Name.name text)) rest
     locate it composite & cc
 
 
@@ -258,7 +268,7 @@ instance Compile Py.ExpressionList where
     = fmap (locate it)
     . compile child cc
   compile Py.ExpressionList { Py.extraChildren = items } _
-    = const (fail ("unimplemented: ExpressionList of length " <> show items))
+    = const . pure . unimplemented $ "ExpressionList of length " <> show items
 
 
 instance Compile Py.False where
@@ -274,25 +284,28 @@ instance Compile Py.FunctionDefinition where
     , body
     } cc next = do
       -- Compile each of the parameters, then the body.
-      parameters' <- traverse param parameters
-      body' <- compile body pure next
-      -- Build a lambda.
-      let located = locate it (lams parameters' body')
-      -- Give it a name (below), then augment the current continuation
-      -- with the new name (with 'def'), so that calling contexts know
-      -- that we have built an exportable definition.
-      assigning located <$> local (def (Name name)) (cc next)
-    where param (Py.Parameter (Prj (Py.Identifier _pann pname))) = pure . named' . Name $ pname
-          param x                                                = unimplemented x
-          unimplemented x = fail $ "unimplemented: " <> show x
-          assigning item f = (Name.named' (Name name) :<- item) >>>= f
+      let parameterMs = fmap param parameters
+      if any isNothing parameterMs
+        then pure . invariantViolated $ "Couldn't extract parameters"
+        else do
+          let parameters' = catMaybes parameterMs
+          body' <- compile body pure next
+          -- Build a lambda.
+          let located = locate it (rec (Name.named' (Name.name name)) (lams parameters' body'))
+          -- Give it a name (below), then augment the current continuation
+          -- with the new name (with 'def'), so that calling contexts know
+          -- that we have built an exportable definition.
+          assigning located <$> local (def (Name.name name)) (cc next)
+    where param (Py.Parameter (Prj (Py.Identifier _pann pname))) = Just . named' . Name.name $ pname
+          param _                                                = Nothing
+          assigning item f = (Name.named' (Name.name name) :<- item) >>>= f
 
 instance Compile Py.FutureImportStatement
 instance Compile Py.GeneratorExpression
 instance Compile Py.GlobalStatement
 
 instance Compile Py.Identifier where
-  compile Py.Identifier { text } cc _ = cc . pure . Name $ text
+  compile Py.Identifier { text } cc _ = cc . pure . Name.name $ text
 
 instance Compile Py.IfStatement where
   compile it@Py.IfStatement{ condition, consequence, alternative} cc next =
@@ -308,9 +321,21 @@ instance Compile Py.ImportFromStatement
 instance Compile Py.ImportStatement
 instance Compile Py.Integer
 
-instance Compile Py.Lambda
+instance Compile Py.Lambda where
+  compile it@Py.Lambda
+    { body
+    , parameters
+    } cc next = do
+      let unparams (Py.LambdaParameters _ ps) = toList ps
+          unparam (Py.Parameter (Prj (Py.Identifier _pann pname))) = Just . named' . Name.name $ pname
+          unparam _                                                = Nothing
+      body' <- compile body cc next
+      let params = maybe [] unparams parameters
+      pure . locate it . lams (catMaybes (fmap unparam params)) $ body'
+
 instance Compile Py.List
 instance Compile Py.ListComprehension
+instance Compile Py.ListSplat
 
 instance Compile Py.Module where
   compile it@Py.Module { Py.extraChildren = stmts } _cc =
@@ -326,9 +351,17 @@ instance Compile Py.Module where
     in fmap (locate it) . foldr compile buildRecord stmts
 
 instance Compile Py.NamedExpression
-instance Compile Py.None
+
+instance Compile Py.None where
+  -- None is not an lvalue, and thus always points to the prelude's None.
+  compile _it cc _ = cc (prelude ["None"])
+
 instance Compile Py.NonlocalStatement
-instance Compile Py.NotOperator
+
+instance Compile Py.NotOperator where
+  compile _it@Py.NotOperator{ argument } cc next = do
+    val <- compile argument pure next
+    cc (prelude ["not"] $$ val)
 
 instance Compile Py.ParenthesizedExpression where
   compile it@Py.ParenthesizedExpression { extraChildren } cc
@@ -346,7 +379,7 @@ instance Compile Py.ReturnStatement where
   compile it@Py.ReturnStatement { Py.extraChildren = vals } _ next = locate it <$> case vals of
     Nothing -> pure none
     Just Py.ExpressionList { extraChildren = [val] } -> compile val pure next
-    Just Py.ExpressionList { extraChildren = vals  } -> fail ("unimplemented: return statement returning " <> show (length vals) <> " values")
+    Just Py.ExpressionList { extraChildren = vals  } -> pure (invariantViolated ("unimplemented: return statement returning " <> show (length vals) <> " values"))
 
 
 instance Compile Py.RaiseStatement
@@ -355,7 +388,19 @@ instance Compile Py.SetComprehension
 
 deriving instance Compile Py.SimpleStatement
 
-instance Compile Py.String
+instance Compile Py.String where
+  compile it@Py.String { extraChildren } cc _ = do
+    let extract = \case
+          Prj Py.EscapeSequence { text } -> Just text
+          _other                         -> Nothing
+
+    let contents = fmap extract extraChildren
+
+    if any isNothing contents
+      then pure . invariantViolated $ "Couldn't string-desugar " <> show it
+      else let new = prelude ["str", "__slots", "__new__"]
+           in cc $ locate it (new $$ Core.string (mconcat (catMaybes contents)))
+
 instance Compile Py.Subscript
 
 instance Compile Py.True where
@@ -366,8 +411,7 @@ instance Compile Py.TryStatement
 instance Compile Py.Tuple where
   compile it@Py.Tuple { Py.extraChildren = [] } cc _ = cc $ locate it unit
 
-  compile it _ _
-    = fail ("Unimplemented: non-empty tuple " <> show it)
+  compile it _ _                                     = pure $ unimplemented it
 
 instance Compile Py.UnaryOperator
 instance Compile Py.WhileStatement

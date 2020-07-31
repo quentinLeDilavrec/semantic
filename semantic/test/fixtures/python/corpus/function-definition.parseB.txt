@@ -1,0 +1,65 @@
+(Module 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "j")))))) 
+      (Identifier "g") 
+      (Parameters 
+        (Parameter 
+          (Identifier "i")) 
+        (Parameter 
+          (ListSplat 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "j")))))))) 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b")))))) 
+      (Identifier "c") 
+      (Parameters))) 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a")))))) 
+      (Identifier "d") 
+      (Parameters 
+        (Parameter 
+          (Identifier "e"))))) 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "j")))))) 
+      (Identifier "i") 
+      (Parameters 
+        (Parameter 
+          (TypedDefaultParameter 
+            (Expression 
+              (PrimaryExpression 
+                (Integer "1"))) 
+            (Identifier "j") 
+            (Type 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "int")))))) 
+        (Parameter 
+          (DictionarySplat 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "d")))))))))

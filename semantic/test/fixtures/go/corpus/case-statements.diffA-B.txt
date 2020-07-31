@@ -1,0 +1,46 @@
+(Statements
+  (Package
+    (Identifier))
+  (Function
+    (Identifier)
+  { (Match
+    {-(Empty)-}
+    {-(Statements)-})
+  ->(Statements
+    {+(Match
+      {+(Statements)+}
+      {+(Pattern
+        {+(Statements
+          {+(Identifier)+}
+          {+(Call
+            {+(Identifier)+}
+            {+(Statements)+}
+            {+(Empty)+})+})+}
+        {+(Statements)+})+})+}
+    {+(Match
+      {+(Statements
+        {+(Identifier)+})+}
+      {+(Pattern
+        {+(Statements
+          {+(Statements
+            {+(Integer)+}
+            {+(Integer)+})+}
+          {+(Call
+            {+(Identifier)+}
+            {+(Statements)+}
+            {+(Empty)+})+}
+          {+(Call
+            {+(Identifier)+}
+            {+(Statements)+}
+            {+(Empty)+})+}
+          {+(Pattern
+            {+(Identifier)+}
+            {+(Empty)+})+})+}
+        {+(DefaultPattern
+          {+(Statements
+            {+(Call
+              {+(Identifier)+}
+              {+(Statements)+}
+              {+(Empty)+})+}
+            {+(Break
+              {+(Empty)+})+})+})+})+})+}) }))

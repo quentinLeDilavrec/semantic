@@ -1,0 +1,63 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "a") 
+            (Type 
+              (SimpleType 
+                (ArrayType 
+                  (Expression 
+                    (BinaryExpression 
+                      (Token) 
+                      (Expression 
+                        (IntLiteral "1")) 
+                      (Expression 
+                        (IntLiteral "1")))) 
+                  (Type 
+                    (SimpleType 
+                      (TypeIdentifier "y"))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "d") 
+            (Type 
+              (SimpleType 
+                (ArrayType 
+                  (Expression 
+                    (IntLiteral "6")) 
+                  (Type 
+                    (SimpleType 
+                      (ArrayType 
+                        (Expression 
+                          (IntLiteral "9")) 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "int")))))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "e") 
+            (Type 
+              (SimpleType 
+                (ArrayType 
+                  (Expression 
+                    (IntLiteral "1")) 
+                  (Type 
+                    (SimpleType 
+                      (ArrayType 
+                        (Expression 
+                          (IntLiteral "2")) 
+                        (Type 
+                          (SimpleType 
+                            (ArrayType 
+                              (Expression 
+                                (IntLiteral "3")) 
+                              (Type 
+                                (SimpleType 
+                                  (TypeIdentifier "float64")))))))))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

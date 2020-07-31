@@ -1,0 +1,19 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (TypeAliasDeclaration 
+        (UnionType 
+          (UnionType 
+            (UnionType 
+              (PredefinedType "string") 
+              (PredefinedType "number")) 
+            (TypeIdentifier "Date")) 
+          (GenericType 
+            (TypeIdentifier "Array") 
+            (TypeArguments 
+              (UnionType 
+                (UnionType 
+                  (PredefinedType "string") 
+                  (PredefinedType "number")) 
+                (TypeIdentifier "Date"))))) 
+        (TypeIdentifier "IndexableType")))))

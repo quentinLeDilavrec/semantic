@@ -1,0 +1,23 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (VariableDeclaration 
+        (VariableDeclarator 
+          (Expression 
+            (JsxElement 
+              (JsxClosingElement 
+                (Identifier "Text")) 
+              (JsxOpeningElement 
+                (JsxAttribute 
+                  (PropertyIdentifier "bar") 
+                  (JsxExpression 
+                    (Expression 
+                      (MemberExpression 
+                        (PropertyIdentifier "titleText") 
+                        (Expression 
+                          (Identifier "styles")))))) 
+                (Identifier "Text")) 
+              (JsxExpression 
+                (Expression 
+                  (Identifier "children"))))) 
+          (Identifier "a"))))))

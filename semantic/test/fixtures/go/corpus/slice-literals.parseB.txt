@@ -1,0 +1,55 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (CompositeLiteral 
+                  (LiteralValue 
+                    (Element 
+                      (Expression 
+                        (InterpretedStringLiteral)))) 
+                  (SliceType 
+                    (Type 
+                      (SimpleType 
+                        (TypeIdentifier "string"))))))) 
+            (Identifier "s1")))) 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (CompositeLiteral 
+                  (LiteralValue 
+                    (Element 
+                      (Expression 
+                        (InterpretedStringLiteral)))) 
+                  (SliceType 
+                    (Type 
+                      (SimpleType 
+                        (TypeIdentifier "string"))))))) 
+            (Identifier "s2")))) 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (CompositeLiteral 
+                  (LiteralValue 
+                    (Element 
+                      (Expression 
+                        (InterpretedStringLiteral))) 
+                    (Element 
+                      (Expression 
+                        (InterpretedStringLiteral)))) 
+                  (SliceType 
+                    (Type 
+                      (SimpleType 
+                        (TypeIdentifier "string"))))))) 
+            (Identifier "s3"))))) 
+    (Identifier "main") 
+    (ParameterList)))

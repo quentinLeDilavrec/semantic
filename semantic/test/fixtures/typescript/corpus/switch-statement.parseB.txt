@@ -1,0 +1,30 @@
+(Program 
+  (Statement 
+    (SwitchStatement 
+      (SwitchBody 
+        (SwitchCase 
+          (Expression 
+            (Number "1")) 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (Number "1"))))) 
+        (SwitchCase 
+          (Expression 
+            (Number "2")) 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (Number "2"))))) 
+        (SwitchCase 
+          (Expression 
+            (Number "3")) 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (Number "3")))))) 
+      (ParenthesizedExpression 
+        (Expression 
+          (Number "2"))))) 
+  (Statement 
+    (EmptyStatement ";")))

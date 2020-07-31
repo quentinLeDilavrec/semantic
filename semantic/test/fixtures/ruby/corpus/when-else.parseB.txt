@@ -1,0 +1,45 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Case 
+          (Arg 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "foo"))))) 
+          (When 
+            (Pattern 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "bar")))))) 
+            (Then 
+              (Statement 
+                (Arg 
+                  (Primary 
+                    (Lhs 
+                      (Variable 
+                        (Identifier "baz")))))))) 
+          (When 
+            (Pattern 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "x"))))))) 
+          (When 
+            (Pattern 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "y"))))))) 
+          (Else 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "qoz"))))))))))))

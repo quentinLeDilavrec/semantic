@@ -1,0 +1,28 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (List 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "print")))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (List 
+            (Expression 
+              (PrimaryExpression 
+                (Integer "1"))) 
+            (Expression 
+              (PrimaryExpression 
+                (Integer "3")))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (List 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b")))))))))

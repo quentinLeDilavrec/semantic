@@ -1,0 +1,33 @@
+(Program 
+  (Statement 
+    (Alias 
+      (MethodName 
+        (Symbol)) 
+      (MethodName 
+        (Symbol)))) 
+  (Statement 
+    (Alias 
+      (MethodName 
+        (Identifier "bar")) 
+      (MethodName 
+        (Identifier "foo")))) 
+  (Statement 
+    (Alias 
+      (MethodName 
+        (GlobalVariable "$&")) 
+      (MethodName 
+        (GlobalVariable "$FOO")))) 
+  (Statement 
+    (Alias 
+      (MethodName 
+        (Operator "+")) 
+      (MethodName 
+        (Identifier "foo")))) 
+  (Statement 
+    (Alias 
+      (MethodName 
+        (Setter 
+          (Identifier "bar"))) 
+      (MethodName 
+        (Setter 
+          (Identifier "foo"))))))

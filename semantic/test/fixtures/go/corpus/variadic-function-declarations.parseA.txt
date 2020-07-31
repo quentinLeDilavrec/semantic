@@ -1,0 +1,39 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block) 
+    (Identifier "main") 
+    (ParameterList)) 
+  (FunctionDeclaration 
+    (Block) 
+    (Identifier "f1") 
+    (ParameterList 
+      (VariadicParameterDeclaration 
+        (Identifier "a") 
+        (Type 
+          (SimpleType 
+            (PointerType 
+              (Type 
+                (SimpleType 
+                  (TypeIdentifier "int"))))))))) 
+  (FunctionDeclaration 
+    (Block) 
+    (Identifier "f2") 
+    (ParameterList 
+      (VariadicParameterDeclaration 
+        (Type 
+          (SimpleType 
+            (TypeIdentifier "int")))))) 
+  (FunctionDeclaration 
+    (Block) 
+    (Identifier "f3") 
+    (ParameterList 
+      (ParameterDeclaration 
+        (Type 
+          (SimpleType 
+            (TypeIdentifier "a")))) 
+      (VariadicParameterDeclaration 
+        (Type 
+          (SimpleType 
+            (TypeIdentifier "bool")))))))

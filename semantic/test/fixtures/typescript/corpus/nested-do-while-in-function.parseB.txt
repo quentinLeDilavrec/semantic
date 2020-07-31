@@ -1,0 +1,27 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (FunctionDeclaration 
+        (StatementBlock 
+          (Statement 
+            (DoStatement 
+              (Statement 
+                (StatementBlock 
+                  (Statement 
+                    (ExpressionStatement 
+                      (Expression 
+                        (CallExpression 
+                          (Expression 
+                            (Identifier "something")) 
+                          (Arguments 
+                            (Expression 
+                              (Identifier "arg2"))))))))) 
+              (ParenthesizedExpression 
+                (Expression 
+                  (Identifier "arg1")))))) 
+        (Identifier "f") 
+        (FormalParameters 
+          (RequiredParameter 
+            (Identifier "arg1")) 
+          (RequiredParameter 
+            (Identifier "arg2")))))))

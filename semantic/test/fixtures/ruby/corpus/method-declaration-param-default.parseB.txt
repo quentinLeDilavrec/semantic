@@ -1,0 +1,14 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Method 
+          (MethodName 
+            (Identifier "foo")) 
+          (MethodParameters 
+            (OptionalParameter 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Nil "nil")))) 
+              (Identifier "name"))))))))

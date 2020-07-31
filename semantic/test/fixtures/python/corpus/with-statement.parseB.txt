@@ -1,0 +1,16 @@
+(Module 
+  (CompoundStatement 
+    (WithStatement 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a")))))) 
+      (WithItem 
+        (Expression 
+          (PrimaryExpression 
+            (Identifier "b"))) 
+        (Expression 
+          (PrimaryExpression 
+            (Identifier "c")))))))

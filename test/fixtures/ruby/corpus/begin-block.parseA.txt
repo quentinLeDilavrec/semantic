@@ -1,4 +1,0 @@
-(Statements
-  (ScopeEntry
-    (Send
-      (Identifier))))

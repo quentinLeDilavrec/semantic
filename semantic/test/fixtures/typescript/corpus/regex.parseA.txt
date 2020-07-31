@@ -1,0 +1,7 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Regex 
+          (RegexFlags "g") 
+          (RegexPattern "one"))))))

@@ -1,6 +1,0 @@
-(Statements
-  (While
-    (Send
-      (Identifier))
-    (Send
-      (Identifier))))

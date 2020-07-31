@@ -1,0 +1,15 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (ArrowFunction 
+          (StatementBlock 
+            (Statement 
+              (ReturnStatement 
+                (Expression 
+                  (Identifier "g"))))) 
+          (FormalParameters 
+            (RequiredParameter 
+              (Identifier "f")) 
+            (RequiredParameter 
+              (Identifier "g"))))))))

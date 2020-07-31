@@ -1,0 +1,8 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (NotOperator 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "a"))))))))

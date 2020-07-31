@@ -1,9 +1,0 @@
-(Statements
-  (Send
-    (Identifier)
-    (Function
-      (Empty)
-      (Identifier)
-      (Plus
-        (Identifier)
-        (Integer)))))

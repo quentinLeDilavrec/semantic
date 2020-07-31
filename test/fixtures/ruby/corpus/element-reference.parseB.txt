@@ -1,9 +1,0 @@
-(Statements
-  (Subscript
-    (Send
-      (Identifier))
-    (TextElement))
-  (Subscript
-    (Send
-      (Identifier))
-    (SymbolElement)))

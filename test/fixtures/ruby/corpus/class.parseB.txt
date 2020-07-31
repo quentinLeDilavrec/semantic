@@ -1,7 +1,0 @@
-(Statements
-  (Class
-    (Identifier)
-    (Method
-      (Empty)
-      (Identifier)
-      (Statements))))

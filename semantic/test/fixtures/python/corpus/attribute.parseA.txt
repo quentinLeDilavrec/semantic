@@ -1,0 +1,9 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Attribute 
+            (Identifier "b") 
+            (PrimaryExpression 
+              (Identifier "a"))))))))

@@ -1,0 +1,15 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (NotOperator 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "c"))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (NotOperator 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "b"))))))))

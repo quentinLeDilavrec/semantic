@@ -18,62 +18,20 @@ Space leaks can be detected by running `semantic` with a restricted heap size. N
 
 ## Building
 
-`stack build --fast` is a nice way to speed up local development (builds without optimizations).
-
+Before building with `cabal`, be sure to run `cabal configure --disable-optimizations --enable-tests`. GHC defaults to `-O1`, which can significantly slow recompiles.
 
 ## Testing
 
 `stack build --fast semantic:test` builds and runs the unit tests.
 
-- Find out what all the possible test arguments are with `stack test --help`.
+- Find out what all the possible test arguments are with `cabal run semantic:spec -- --help`.
 - Focus in on a particular test or set of tests with `-m`/`--match`:
 
-        stack test --test-arguments="-m ruby"
-
-- Use `--skip` to run everything but matching tests:
-
-        stack test --test-arguments="--skip ruby"
+        cabal run semantic:spec -- -p ruby
 
 - It can take a while to run them over the whole project. Focus in on a particular module with `--test-arguments`:
 
-        stack test --test-arguments=src/Data/Range.hs
-
-
-## Difftool
-
-`git` can be configured to open diffs in `semantic` using `git-difftool`:
-
-1. Install semantic to the local bin path: `stack install :semantic`
-
-2. Configure `semantic` as a difftool:
-
-        git config difftool.semantic.cmd 'semantic diff --patch "$LOCAL" "$REMOTE"'
-
-3. Optionally, configure `semantic` as the default difftool:
-
-        git config diff.tool semantic
-
-4. Perform git diffs using semantic by invoking `git-difftool`:
-
-        # if configured as default
-        git difftool
-        # otherwise
-        git difftool -t semantic
-
-5. _Bonus round!_ Optionally, configure `git-difftool` to never prompt:
-
-        git config difftool.prompt false
-
-
-## Editing
-
-- 1. Install ghc-mod from the semantic directory by running:
-
-        `stack install ghc-mod`
-
-- 2. You'll need the `ide-haskell` plugins for atom. You can install through apm:
-
-        `apm install haskell-ghc-mod ide-haskell ide-haskell-cabal linter linter-ui-default`
+        cabal run semantic:spec -- -p Data.Language
 
 # Ctags Support
 
@@ -98,12 +56,6 @@ Alternatively, you can replace `symbols-view` with `joshvera/tags-view` in your 
         `git clone https://github.com/joshvera/tags-view ~/.atom/packages/tags-view`
 
 Then disable the `symbols-view` package.
-
-
-## Semantic documentation in Dash
-
-You can generate a `semantic` docset and import it into Dash locally. To do so run the `script/haddock` first to ensure Haddock documentation is generated. Then run `script/docset`. This should generate `.docset/semantic.docset` in the `semantic` repo. The last step is to import the `semantic.docset` into Dash. Open dash, open preferences, select the 'Docsets' tab, click the `+` icon to add a new docset, and direct the file browser to `semantic/.docsets/semantic.docset`.
-
 
 ## Working with grammar datatypes
 
@@ -148,19 +100,27 @@ _Voilà!_ You’re now looking at the source code for the datatype generated fro
 
 ## GHCi
 
-The Haskell interactive repl (GHCi) allows you to quickly typecheck your work and test out ideas interactively. It’s always worth having a repl open, but we’ve particularly tuned some workflows, e.g. semantic assignment development, for the repl.
-
-[pretty-printing]: pretty-printing
-
-
-### Configuration
-
-We configure `ghci` with defaults & macros for use with `semantic` via the [`.ghci` file][] at the project root, and you can further customize its behaviour via the `~/.ghci` file.
+The Haskell interactive repl (GHCi) allows you to quickly typecheck your work and test out ideas interactively. It’s always worth having a repl open, and we’ve particularly tuned some workflows for the repl.
 
 Full docs for ghci can be found in the [user’s guide][ghci user’s guide].
 
 [ghci user’s guide]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
-[`.ghci` file]: https://github.com/github/semantic/blob/master/.ghci
+
+
+### Multiple components
+
+`semantic` consists of multiple packages and components, which makes it somewhat challenging to load into `ghci` using e.g. `cabal repl`. To help that, we provide [`script/repl`][] to automate working with multiple components & packages. Unlike when using `cabal repl`, after loading you will need to explicitly `:load` (at least some of) the sources you need to work with. For example, when working in the main `semantic` package, almost everything can be loaded with `:load Semantic.CLI`, since the `Semantic.CLI` module ultimately depends on just about everything else in the repo.
+
+This script is also set up to store intermediate build products in a separate `dist-repl` dir to avoid colliding with normal builds.
+
+[`script/repl`]: https://github.com/github/semantic/blob/master/script/repl
+
+
+### Configuration
+
+`ghci` can be configured with scripts containing Haskell statements and repl commands. By default, the `~/.ghc/ghci.conf` file will be loaded, as well as a `.ghci` file in the working directory, if any. We don’t currently provide such for use with `semantic`, but we do provide a [`.ghci.sample`][] file which we suggest copying to `~/.ghc/ghci.conf` for better typed holes, pretty-printing via `pretty-simple`, and a simple prompt.
+
+[`.ghci.sample`]: https://github.com/github/semantic/blob/master/.ghci.sample
 
 
 ### Managing history
@@ -178,9 +138,9 @@ maxHistorySize: Nothing
 
 ### Pretty-printing
 
-By default, GHCi prints the results of expressions using their `Show` instances, which can be particularly difficult to read for large recursive structures like `Term`s and `Diff`s. The project’s [`.ghci` file][] provides `:pretty` & `:no-pretty` macros which respectively enable & disable colourized, pretty-printed formatting of result values instead. These macros depend on the the `pretty-show` & `hscolour` packages.
+By default, GHCi prints the results of expressions using their `Show` instances, which can be particularly difficult to read for large recursive structures like `Term`s and `Diff`s. The project’s [`.ghci.sample`][] file provides `:pretty` & `:no-pretty` macros which respectively enable & disable colourized, pretty-printed formatting of result values instead. These macros depend on the the `pretty-simple` package.
 
-Since `:reload`ing resets local bindings, the [`.ghci` file][] also provides a convenient `:r` macro which reloads and then immediately re-enables `:pretty`.
+Since `:reload`ing resets local bindings, the file also provides a convenient `:r` macro which reloads and then immediately re-enables `:pretty`.
 
 You can use `:pretty` & `:no-pretty` like so:
 
@@ -203,60 +163,12 @@ You can use `:pretty` & `:no-pretty` like so:
 ```
 
 
-### Working in Assignment
-
-When working in assignment, some setup is required. This macro automates that by automatically importing the necessary modules and outputs an example command. If you provide the language you are working with as an optional parameter, the example command is formatted for that language's specific needs (parser, example file extension, etc.).
-
-The macro is defined as:
-
-```
-:{
-assignmentExample lang = case lang of
-  "Python" -> mk "py" "python"
-  "Go" -> mk "go" "go"
-  "Ruby" -> mk "rb" "ruby"
-  "JavaScript" -> mk "js" "typescript"
-  "TypeScript" -> mk "ts" "typescript"
-  "Haskell" -> mk "hs" "haskell"
-  "Markdown" -> mk "md" "markdown"
-  "JSON" -> mk "json" "json"
-  _ -> mk "" ""
-  where mk fileExtension parser = putStrLn ("example: fmap (() <$) . runTask . parse " ++ parser ++ "Parser =<< Semantic.Util.blob \"example." ++ fileExtension ++ "\"") >> return ("import Parsing.Parser\nimport Semantic.Task\nimport Semantic.Util")
-:}
-
-:def assignment assignmentExample
-```
-
-And is invoked in GHCi like:
-
-```
-λ :assignment Python
-```
-
-The output produces a one line expression assuming the syntax to assign is in a file named `example` with the relevant programming language extension:
-
-```haskell
-quieterm <$> parseFile pythonParser "example.py"
-```
-
-
-### Inspecting TreeSitter ASTs
-
-Inspecting the parse tree from TreeSitter can be helpful for debugging. In GHCi, the command below allows viewing the TreeSitter production name of each node in the TreeSitter AST:
-
-```haskell
-import TreeSitter.Java
-fmap nodeSymbol <$> parseFile javaASTParser "example.java"
-```
-
-
-### Using Threadscope
+## Using Threadscope
 
 Threadscope is a tool for profiling the multi-threaded performance of Haskell programs. It allows us to see how work is shared across processors and identify performance issues related to garbage collection or bottlenecks in our processes.
 
 To install threadscope:
 
-1. Download a prebuilt binary from https://github.com/haskell/ThreadScope/releases .
-2. `chmod a+x` the result of extracting the release.
-3. `brew install gtk+ gtk-mac-integration`.
-4. profit.
+1. Download a prebuilt binary from https://github.com/haskell/ThreadScope/releases
+2. `chmod a+x` the result of extracting the release
+3. `brew install gtk+ gtk-mac-integration`

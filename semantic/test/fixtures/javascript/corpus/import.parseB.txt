@@ -1,0 +1,59 @@
+(Program 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (Identifier "defaultMember")))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (NamespaceImport 
+          (Identifier "otherName"))))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (NamedImports 
+          (ImportSpecifier 
+            (Identifier "element")))))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (NamedImports 
+          (ImportSpecifier 
+            (Identifier "element1")) 
+          (ImportSpecifier 
+            (Identifier "element2")))))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (NamedImports 
+          (ImportSpecifier 
+            (Identifier "element1")) 
+          (ImportSpecifier 
+            (Identifier "elementAlias2") 
+            (Identifier "element2")))))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (Identifier "defaultMember") 
+        (NamedImports 
+          (ImportSpecifier 
+            (Identifier "element1")) 
+          (ImportSpecifier 
+            (Identifier "elementAlias2") 
+            (Identifier "element2")))))) 
+  (Statement 
+    (ImportStatement 
+      (String) 
+      (ImportClause 
+        (Identifier "defaultMember") 
+        (NamespaceImport 
+          (Identifier "element"))))) 
+  (Statement 
+    (ImportStatement 
+      (String))))

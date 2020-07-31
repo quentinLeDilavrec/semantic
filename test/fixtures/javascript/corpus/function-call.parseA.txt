@@ -1,6 +1,0 @@
-(Statements
-  (Call
-    (Identifier)
-    (Identifier)
-    (TextElement)
-    (Empty)))

@@ -1,0 +1,54 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "t1") 
+            (Type 
+              (SimpleType 
+                (StructType 
+                  (FieldDeclarationList))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "t2") 
+            (Type 
+              (SimpleType 
+                (StructType 
+                  (FieldDeclarationList 
+                    (FieldDeclaration 
+                      (TypeIdentifier "Person"))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "t3") 
+            (Type 
+              (SimpleType 
+                (StructType 
+                  (FieldDeclarationList 
+                    (FieldDeclaration 
+                      (FieldIdentifier "f") 
+                      (Token) 
+                      (FieldIdentifier "g") 
+                      (TypeIdentifier "int"))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "t4") 
+            (Type 
+              (SimpleType 
+                (StructType 
+                  (FieldDeclarationList 
+                    (FieldDeclaration 
+                      (QualifiedType 
+                        (TypeIdentifier "s1") 
+                        (PackageIdentifier "p"))) 
+                    (FieldDeclaration 
+                      (RawStringLiteral "`json:\"h\"`") 
+                      (FieldIdentifier "h") 
+                      (TypeIdentifier "int")))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

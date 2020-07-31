@@ -1,0 +1,61 @@
+(Statements
+  (Assignment
+    (Statements
+      (Identifier)
+      (Identifier)
+    {+(Identifier)+})
+    (Array
+      (Integer)
+      (Integer)
+      (Integer)))
+{+(Assignment
+  {+(Statements
+    {+(Identifier)+}
+    {+(Identifier)+})+}
+  {+(Array
+    {+(Integer)+}
+    {+(Integer)+})+})+}
+{+(Assignment
+  {+(Statements
+    {+(Identifier)+}
+    {+(Identifier)+})+}
+  {+(Array
+    {+(Integer)+}
+    {+(Integer)+})+})+}
+{+(Assignment
+  {+(Statements
+    {+(Identifier)+}
+    {+(Identifier)+})+}
+  {+(Array
+    {+(Integer)+}
+    {+(Integer)+})+})+}
+{+(Assignment
+  {+(Statements
+    {+(Identifier)+}
+    {+(Identifier)+})+}
+  {+(Send
+    {+(Identifier)+})+})+}
+{+(Assignment
+  {+(Statements
+    {+(Send
+      {+(This)+}
+      {+(Identifier)+})+}
+    {+(Send
+      {+(This)+}
+      {+(Identifier)+})+})+}
+  {+(Statements
+    {+(Send
+      {+(Send
+        {+(Identifier)+})+}
+      {+(Identifier)+})+}
+    {+(Send
+      {+(Send
+        {+(Identifier)+})+}
+      {+(Identifier)+})+})+})+}
+{+(Assignment
+  {+(Statements
+    {+(Statements
+      {+(Identifier)+}
+      {+(Identifier)+})+})+}
+  {+(Send
+    {+(Identifier)+})+})+})

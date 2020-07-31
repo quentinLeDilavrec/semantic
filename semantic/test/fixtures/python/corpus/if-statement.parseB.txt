@@ -1,0 +1,17 @@
+(Module 
+  (CompoundStatement 
+    (IfStatement 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a"))))) 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b")))))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "c"))))))

@@ -1,5 +1,0 @@
-(Statements
-  (Not
-    (Identifier))
-  (Not
-    (Identifier)))

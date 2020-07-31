@@ -1,8 +1,0 @@
-(Statements
-  (VariableDeclaration
-    (Assignment
-      (Annotation
-        (ArrayType
-          (TypeIdentifier)))
-      (Identifier)
-      (Empty))))

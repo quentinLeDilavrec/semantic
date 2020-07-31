@@ -1,0 +1,13 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (ClassDeclaration 
+        (ClassBody 
+          (MethodDefinition 
+            (TypeAnnotation 
+              (TypeIdentifier "Int")) 
+            (StatementBlock) 
+            (PropertyIdentifier "foo") 
+            (FormalParameters) 
+            (AccessibilityModifier "public"))) 
+        (TypeIdentifier "Foo")))))

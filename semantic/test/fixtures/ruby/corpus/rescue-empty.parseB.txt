@@ -1,0 +1,19 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Begin 
+          (Statement 
+            (Arg 
+              (Primary 
+                (Lhs 
+                  (Variable 
+                    (Identifier "foo")))))) 
+          (Rescue 
+            (Then 
+              (Statement 
+                (Arg 
+                  (Primary 
+                    (Lhs 
+                      (Variable 
+                        (Identifier "bar")))))))))))))

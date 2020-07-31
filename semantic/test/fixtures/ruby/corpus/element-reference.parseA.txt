@@ -1,0 +1,43 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Lhs 
+          (ElementReference 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "foo")))) 
+            (Arg 
+              (Primary 
+                (Lhs 
+                  (Variable 
+                    (Identifier "bar")))))))))) 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Lhs 
+          (ElementReference 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "foo")))) 
+            (Arg 
+              (Primary 
+                (Symbol)))))))) 
+  (Statement 
+    (Assignment 
+      (Lhs 
+        (ElementReference 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "foo")))) 
+          (Arg 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "bar"))))))) 
+      (Arg 
+        (Primary 
+          (Integer "1"))))))

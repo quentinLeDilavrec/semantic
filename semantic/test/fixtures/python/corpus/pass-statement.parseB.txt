@@ -1,0 +1,5 @@
+(Module 
+  (SimpleStatement 
+    (PassStatement "pass")) 
+  (SimpleStatement 
+    (PassStatement "pass")))

@@ -1,4 +1,0 @@
-(Statements
-  (Cast
-    (Identifier)
-    (PredefinedType)))

@@ -1,0 +1,18 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Lambda 
+          (Block 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Integer "1")))) 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Integer "2"))))) 
+          (LambdaParameters 
+            (Identifier "a") 
+            (Identifier "b") 
+            (Identifier "c")))))))

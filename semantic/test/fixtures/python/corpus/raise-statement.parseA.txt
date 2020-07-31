@@ -1,0 +1,30 @@
+(Module 
+  (SimpleStatement 
+    (RaiseStatement)) 
+  (SimpleStatement 
+    (RaiseStatement 
+      (ExpressionList 
+        (Expression 
+          (PrimaryExpression 
+            (Call 
+              (PrimaryExpression 
+                (Identifier "RuntimeError")) 
+              (ArgumentList 
+                (Expression 
+                  (PrimaryExpression 
+                    (String)))))))))) 
+  (SimpleStatement 
+    (RaiseStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "e"))) 
+      (ExpressionList 
+        (Expression 
+          (PrimaryExpression 
+            (Call 
+              (PrimaryExpression 
+                (Identifier "RunTimeError")) 
+              (ArgumentList 
+                (Expression 
+                  (PrimaryExpression 
+                    (String)))))))))))

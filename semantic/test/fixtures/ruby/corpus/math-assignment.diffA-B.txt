@@ -1,0 +1,22 @@
+(Statements
+  (AugmentedAssignment
+    (Plus
+      (Identifier)
+    { (Integer)
+    ->(Integer) }))
+  (AugmentedAssignment
+    (Minus
+      (Identifier)
+      (Integer)))
+  (AugmentedAssignment
+    (Times
+      (Identifier)
+      (Integer)))
+  (AugmentedAssignment
+    (DividedBy
+      (Identifier)
+      (Integer)))
+  (AugmentedAssignment
+    (Power
+      (Identifier)
+      (Integer))))

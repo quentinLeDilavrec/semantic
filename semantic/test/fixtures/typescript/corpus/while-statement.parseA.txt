@@ -1,0 +1,17 @@
+(Program 
+  (Statement 
+    (WhileStatement 
+      (Statement 
+        (StatementBlock 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (CallExpression 
+                  (Expression 
+                    (Identifier "b")) 
+                  (Arguments))))))) 
+      (ParenthesizedExpression 
+        (Expression 
+          (Identifier "a"))))) 
+  (Statement 
+    (EmptyStatement ";")))

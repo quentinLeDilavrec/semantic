@@ -1,0 +1,4 @@
+cradle:
+  bios:
+    program: ".hie-dispatch.sh"
+    dependency-program: script/ghci-flags-dependencies

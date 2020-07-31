@@ -1,0 +1,48 @@
+-- GHCI settings for script/repl.
+-- These live here instead of script/repl for ease of commenting.
+-- These live here instead of .ghci so cabal repl remains unaffected.
+-- These live here instead of script/ghci-flags so ghcide remains unaffected.
+
+-- Basic verbosity
+:set -v1
+
+-- Compile to object code
+:set -fwrite-interface -fobject-code
+
+-- Bonus: silence “add these modules to your .cabal file” warnings for files we :load
+:set -Wno-missing-home-modules
+
+-- Warnings for code written in the repl
+:seti -Weverything
+:seti -Wno-all-missed-specialisations
+:seti -Wno-implicit-prelude
+:seti -Wno-missed-specialisations
+:seti -Wno-missing-import-lists
+:seti -Wno-missing-local-signatures
+:seti -Wno-monomorphism-restriction
+:seti -Wno-name-shadowing
+:seti -Wno-safe
+:seti -Wno-unsafe
+:seti -Wno-star-is-type
+:seti -Wno-missing-deriving-strategies
+
+-- Turn on some language extensions you use a lot
+:seti -XFlexibleContexts -XOverloadedStrings -XTypeApplications
+
+-- Break on errors
+:seti -fbreak-on-error
+
+-- Automatically show the code around breakpoints
+:set stop :list
+
+-- Use a cyan lambda as the prompt
+:set prompt "\ESC[1;36m\STXλ \ESC[m\STX"
+
+-- Better errors
+:set -ferror-spans -freverse-errors -fprint-expanded-synonyms
+
+-- Better typed holes
+:set -funclutter-valid-hole-fits -fabstract-refinement-hole-fits -frefinement-level-hole-fits=2
+
+-- This usually impairs understanding
+:seti -Wno-type-defaults

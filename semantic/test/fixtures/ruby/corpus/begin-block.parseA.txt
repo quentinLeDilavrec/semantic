@@ -1,0 +1,9 @@
+(Program 
+  (Statement 
+    (BeginBlock 
+      (Statement 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "foo")))))))))

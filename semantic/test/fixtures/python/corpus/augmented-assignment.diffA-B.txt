@@ -1,0 +1,23 @@
+(Statements
+  (AugmentedAssignment
+  { (Plus
+    {-(Identifier)-}
+    {-(Integer)-})
+  ->(RShift
+    {+(Identifier)+}
+    {+(Integer)+}) })
+{+(AugmentedAssignment
+  {+(DividedBy
+    {+(Identifier)+}
+    {+(Integer)+})+})+}
+  (AugmentedAssignment
+  { (RShift
+    {-(Identifier)-}
+    {-(Integer)-})
+  ->(Plus
+    {+(Identifier)+}
+    {+(Integer)+}) })
+{-(AugmentedAssignment
+  {-(DividedBy
+    {-(Identifier)-}
+    {-(Integer)-})-})-})

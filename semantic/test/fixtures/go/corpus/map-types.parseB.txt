@@ -1,0 +1,20 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "m1") 
+            (Type 
+              (SimpleType 
+                (MapType 
+                  (Type 
+                    (SimpleType 
+                      (TypeIdentifier "error"))) 
+                  (Type 
+                    (SimpleType 
+                      (TypeIdentifier "int")))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

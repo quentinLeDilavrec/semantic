@@ -1,0 +1,57 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (LabeledStatement 
+          (LabelName "M") 
+          (Statement 
+            (EmptyStatement ";")))) 
+      (Statement 
+        (LabeledStatement 
+          (LabelName "M1") 
+          (Statement 
+            (Block 
+              (Statement 
+                (ForStatement 
+                  (Block 
+                    (Statement 
+                      (SimpleStatement 
+                        (Expression 
+                          (CallExpression 
+                            (Expression 
+                              (Identifier "println")) 
+                            (ArgumentList 
+                              (Expression 
+                                (Identifier "i"))))))) 
+                    (Statement 
+                      (BreakStatement 
+                        (LabelName "M1")))) 
+                  (ForClause 
+                    (SimpleStatement 
+                      (ShortVarDeclaration 
+                        (ExpressionList 
+                          (Expression 
+                            (Identifier "i"))) 
+                        (ExpressionList 
+                          (Expression 
+                            (IntLiteral "0"))))) 
+                    (Expression 
+                      (BinaryExpression 
+                        (Token) 
+                        (Expression 
+                          (Identifier "i")) 
+                        (Expression 
+                          (IntLiteral "10")))) 
+                    (SimpleStatement 
+                      (IncStatement 
+                        (Expression 
+                          (Identifier "i"))))))))))) 
+      (Statement 
+        (Block 
+          (Statement 
+            (LabeledStatement 
+              (LabelName "replacement")))))) 
+    (Identifier "main") 
+    (ParameterList)))

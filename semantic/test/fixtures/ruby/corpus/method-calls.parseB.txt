@@ -1,0 +1,6 @@
+(Program 
+  (Statement 
+    (MethodCall 
+      (ArgumentList) 
+      (Variable 
+        (Identifier "bar")))))

@@ -1,7 +1,0 @@
-(Statements
-  (If
-    (Send
-      (Identifier))
-    (Send
-      (Identifier))
-    (Empty)))

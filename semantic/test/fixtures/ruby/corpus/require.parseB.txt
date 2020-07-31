@@ -1,0 +1,20 @@
+(Program 
+  (Statement 
+    (MethodCall 
+      (ArgumentList 
+        (Arg 
+          (Primary 
+            (String)))) 
+      (Variable 
+        (Identifier "require")))) 
+  (Statement 
+    (MethodCall 
+      (ArgumentList 
+        (Arg 
+          (Primary 
+            (Symbol))) 
+        (Arg 
+          (Primary 
+            (String)))) 
+      (Variable 
+        (Identifier "autoload")))))

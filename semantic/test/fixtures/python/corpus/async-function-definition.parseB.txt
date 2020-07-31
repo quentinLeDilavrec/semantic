@@ -1,0 +1,37 @@
+(Module 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "j")))))) 
+      (Identifier "g") 
+      (Parameters 
+        (Parameter 
+          (Identifier "i")) 
+        (Parameter 
+          (Identifier "j"))))) 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "c")))))) 
+      (Identifier "a") 
+      (Parameters))) 
+  (CompoundStatement 
+    (FunctionDefinition 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "e")))))) 
+      (Identifier "d") 
+      (Parameters 
+        (Parameter 
+          (Identifier "c"))))))

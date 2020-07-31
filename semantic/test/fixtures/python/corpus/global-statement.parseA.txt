@@ -1,0 +1,8 @@
+(Module 
+  (SimpleStatement 
+    (GlobalStatement 
+      (Identifier "a"))) 
+  (SimpleStatement 
+    (GlobalStatement 
+      (Identifier "a") 
+      (Identifier "b"))))

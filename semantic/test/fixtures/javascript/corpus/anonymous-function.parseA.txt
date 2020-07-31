@@ -1,0 +1,20 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Function 
+          (StatementBlock 
+            (Statement 
+              (ReturnStatement 
+                (Expression 
+                  (BinaryExpression 
+                    (Token) 
+                    (Expression 
+                      (Identifier "a")) 
+                    (Expression 
+                      (Identifier "b"))))))) 
+          (FormalParameters 
+            (RequiredParameter 
+              (Identifier "a")) 
+            (RequiredParameter 
+              (Identifier "b"))))))))

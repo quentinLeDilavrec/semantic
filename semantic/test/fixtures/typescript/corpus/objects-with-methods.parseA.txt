@@ -1,0 +1,22 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Object 
+          (MethodDefinition 
+            (StatementBlock 
+              (Statement 
+                (ReturnStatement 
+                  (Expression 
+                    (BinaryExpression 
+                      (Token) 
+                      (Expression 
+                        (Identifier "a")) 
+                      (Expression 
+                        (Identifier "b"))))))) 
+            (PropertyIdentifier "add") 
+            (FormalParameters 
+              (RequiredParameter 
+                (Identifier "a")) 
+              (RequiredParameter 
+                (Identifier "b")))))))))

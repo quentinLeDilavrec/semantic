@@ -1,0 +1,30 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "a") 
+            (Type 
+              (SimpleType 
+                (SliceType 
+                  (Type 
+                    (SimpleType 
+                      (TypeIdentifier "b"))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "c") 
+            (Type 
+              (SimpleType 
+                (SliceType 
+                  (Type 
+                    (SimpleType 
+                      (SliceType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "d"))))))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

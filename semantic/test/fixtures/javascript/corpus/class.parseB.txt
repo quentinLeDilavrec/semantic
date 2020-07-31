@@ -1,0 +1,36 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (ClassDeclaration 
+        (ClassBody 
+          (MethodDefinition 
+            (StatementBlock 
+              (Statement 
+                (ReturnStatement 
+                  (Expression 
+                    (Identifier "a"))))) 
+            (PropertyIdentifier "foo") 
+            (FormalParameters 
+              (RequiredParameter 
+                (Identifier "a")))) 
+          (MethodDefinition 
+            (StatementBlock 
+              (Statement 
+                (ReturnStatement 
+                  (Expression 
+                    (Identifier "b"))))) 
+            (PropertyIdentifier "bar") 
+            (FormalParameters 
+              (RequiredParameter 
+                (Identifier "b")))) 
+          (MethodDefinition 
+            (StatementBlock 
+              (Statement 
+                (ReturnStatement 
+                  (Expression 
+                    (Identifier "c"))))) 
+            (PropertyIdentifier "baz") 
+            (FormalParameters 
+              (RequiredParameter 
+                (Identifier "c"))))) 
+        (TypeIdentifier "Foo")))))

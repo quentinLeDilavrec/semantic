@@ -1,0 +1,67 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "c1") 
+            (Type 
+              (SimpleType 
+                (ChannelType 
+                  (Type 
+                    (SimpleType 
+                      (ChannelType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "int")))))))))) 
+          (TypeSpec 
+            (TypeIdentifier "c2") 
+            (Type 
+              (SimpleType 
+                (ChannelType 
+                  (Type 
+                    (SimpleType 
+                      (ChannelType 
+                        (Type 
+                          (SimpleType 
+                            (StructType 
+                              (FieldDeclarationList))))))))))) 
+          (TypeSpec 
+            (TypeIdentifier "c3") 
+            (Type 
+              (SimpleType 
+                (ChannelType 
+                  (Type 
+                    (SimpleType 
+                      (ChannelType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "int")))))))))) 
+          (TypeSpec 
+            (TypeIdentifier "c4") 
+            (Type 
+              (SimpleType 
+                (ChannelType 
+                  (Type 
+                    (SimpleType 
+                      (ChannelType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "int")))))))))) 
+          (TypeSpec 
+            (TypeIdentifier "c5") 
+            (Type 
+              (SimpleType 
+                (ChannelType 
+                  (Type 
+                    (ParenthesizedType 
+                      (Type 
+                        (SimpleType 
+                          (ChannelType 
+                            (Type 
+                              (SimpleType 
+                                (TypeIdentifier "int"))))))))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

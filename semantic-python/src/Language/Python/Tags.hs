@@ -1,110 +1,239 @@
-{-# LANGUAGE AllowAmbiguousTypes, DataKinds, DisambiguateRecordFields, FlexibleContexts, FlexibleInstances, MultiParamTypeClasses, NamedFieldPuns, ScopedTypeVariables, TypeApplications, TypeFamilies, TypeOperators, UndecidableInstances #-}
-module Language.Python.Tags
-( ToTags(..)
-) where
+{-# LANGUAGE DefaultSignatures #-}
+{-# LANGUAGE DisambiguateRecordFields #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeOperators #-}
 
-import           AST.Element
-import           Control.Effect.Reader
-import           Control.Effect.Writer
-import           Data.Maybe (listToMaybe)
-import           Data.Monoid (Ap(..))
-import           Data.List.NonEmpty (NonEmpty(..))
-import           Data.Text as Text
-import           GHC.Generics
-import           Source.Loc
-import           Source.Range
-import           Source.Source as Source
-import           Tags.Tag
+module Language.Python.Tags
+  ( ToTags (..),
+  )
+where
+
+import AST.Element
+import qualified AST.Parse as Parse
+import AST.Token
+import AST.Traversable1
+import Control.Effect.Reader
+import Control.Effect.Writer
+import Control.Effect.State
+import Data.Foldable
+import Data.Text as Text
+import qualified Language.Python.AST as Py
+import Proto.Semantic as P
+import Source.Loc
+import Source.Range
+import Source.Source as Source
 import qualified Tags.Tagging.Precise as Tags
-import qualified TreeSitter.Python.AST as Py
 
 class ToTags t where
+  tags ::
+    ( Has (Reader Source) sig m,
+      Has (State Tags.LineIndices) sig m,
+      Has (Writer Tags.Tags) sig m
+    ) =>
+    t Loc ->
+    m ()
+  default tags ::
+    ( Has (Reader Source) sig m,
+      Has (State Tags.LineIndices) sig m,
+      Has (Writer Tags.Tags) sig m,
+      Traversable1 ToTags t
+    ) =>
+    t Loc ->
+    m ()
+  tags = gtags
+
+instance (ToTags l, ToTags r) => ToTags (l :+: r) where
+  tags (L1 l) = tags l
+  tags (R1 r) = tags r
+
+instance ToTags (Token sym n) where tags _ = pure ()
+
+keywordFunctionCall ::
+  ( Has (Reader Source) sig m,
+      Has (State Tags.LineIndices) sig m,
+    Has (Writer Tags.Tags) sig m,
+    Traversable1 ToTags t
+  ) =>
+  t Loc ->
+  Loc ->
+  Range ->
+  Text ->
+  m ()
+keywordFunctionCall t loc range name = Tags.yield name P.FUNCTION P.DEFINITION loc range >> gtags t
+
+instance ToTags Py.String where
+  tags Py.String {extraChildren} = for_ extraChildren $ \x -> case x of
+    Parse.Success (Prj t@Py.Interpolation {}) -> tags t
+    _ -> pure ()
+
+instance ToTags Py.Interpolation where
+  tags Py.Interpolation {extraChildren} = for_ extraChildren $ \x -> case x of
+    Parse.Success (Prj (Py.Expression expr)) -> tags expr
+    _ -> pure ()
+
+instance ToTags Py.AssertStatement where
+  tags t@Py.AssertStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "assert"
+
+instance ToTags Py.Await where
+  tags t@Py.Await {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "await"
+
+instance ToTags Py.DeleteStatement where
+  tags t@Py.DeleteStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "del"
+
+instance ToTags Py.ExecStatement where
+  tags t@Py.ExecStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "exec"
+
+instance ToTags Py.GlobalStatement where
+  tags t@Py.GlobalStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "global"
+
+instance ToTags Py.NonlocalStatement where
+  tags t@Py.NonlocalStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "nonlocal"
+
+instance ToTags Py.PrintStatement where
+  tags t@Py.PrintStatement {ann = loc@Loc {byteRange}} = keywordFunctionCall t loc byteRange "print"
+
+instance ToTags Py.FunctionDefinition where
   tags
-    :: ( Carrier sig m
-       , Member (Reader Source) sig
-       , Member (Writer Tags.Tags) sig
-       )
-    => t Loc
-    -> m ()
+    t@Py.FunctionDefinition
+      { ann = Loc {byteRange = Range {start}},
+        name = Parse.Success (Py.Identifier {text, ann}),
+        body = Parse.Success (Py.Block {ann = Loc Range {start = end} _})
+      } = do
+      Tags.yield text P.FUNCTION P.DEFINITION ann (Range start end) >> gtags t
+  tags _ = pure ()
 
-instance (ToTagsBy strategy t, strategy ~ ToTagsInstance t) => ToTags t where
-  tags = tags' @strategy
+instance ToTags Py.ClassDefinition where
+  tags
+    t@Py.ClassDefinition
+      { ann = Loc {byteRange = Range {start}},
+        name = Parse.Success (Py.Identifier {text, ann}),
+        body = Parse.Success (Py.Block {ann = Loc Range {start = end} _})
+      } = do
+      Tags.yield text P.CLASS P.DEFINITION ann (Range start end) >> gtags t
+  tags _ = pure ()
 
+instance ToTags Py.Call where
+  tags
+    t@Py.Call
+      { ann = Loc {byteRange},
+        function = Parse.Success (Py.PrimaryExpression expr)
+      } = match expr
+      where
+        match expr = case expr of
+          Prj Py.Attribute {attribute = Parse.Success (Py.Identifier {text, ann})} -> yield text ann
+          Prj Py.Identifier {text, ann} -> yield text ann
+          Prj Py.Call {function = Parse.Success (Py.PrimaryExpression expr')} -> match expr' -- Nested call expression like this in Python represent creating an instance of a class and calling it: e.g. AClass()()
+          Prj (Py.ParenthesizedExpression _ (Parse.Success (Prj (Py.Expression (Prj (Py.PrimaryExpression expr')))))) -> match expr' -- Parenthesized expressions
+          _ -> gtags t
+        yield name loc = Tags.yield name P.CALL P.REFERENCE loc byteRange >> gtags t
+  tags _ = pure ()
 
-class ToTagsBy (strategy :: Strategy) t where
-  tags'
-    :: ( Carrier sig m
-       , Member (Reader Source) sig
-       , Member (Writer Tags.Tags) sig
-       )
-    => t Loc
-    -> m ()
-
-
-data Strategy = Generic | Custom
-
-type family ToTagsInstance t :: Strategy where
-  ToTagsInstance (_ :+: _)             = 'Custom
-  ToTagsInstance Py.FunctionDefinition = 'Custom
-  ToTagsInstance Py.ClassDefinition    = 'Custom
-  ToTagsInstance Py.Call               = 'Custom
-  ToTagsInstance _                     = 'Generic
-
-
-instance (ToTags l, ToTags r) => ToTagsBy 'Custom (l :+: r) where
-  tags' (L1 l) = tags l
-  tags' (R1 r) = tags r
-
-instance ToTagsBy 'Custom Py.FunctionDefinition where
-  tags' t@Py.FunctionDefinition
-    { ann = loc@Loc { byteRange = Range { start } }
-    , name = Py.Identifier { text = name }
-    , body = Py.Block { ann = Loc Range { start = end } _, extraChildren }
-    } = do
-      src <- ask @Source
-      let docs = listToMaybe extraChildren >>= docComment src
-          sliced = slice src (Range start end)
-      Tags.yield (Tag name Function loc (Tags.firstLine sliced) docs)
-      gtags t
-
-instance ToTagsBy 'Custom Py.ClassDefinition where
-  tags' t@Py.ClassDefinition
-    { ann = loc@Loc { byteRange = Range { start } }
-    , name = Py.Identifier { text = name }
-    , body = Py.Block { ann = Loc Range { start = end } _, extraChildren }
-    } = do
-      src <- ask @Source
-      let docs = listToMaybe extraChildren >>= docComment src
-          sliced = slice src (Range start end)
-      Tags.yield (Tag name Class loc (Tags.firstLine sliced) docs)
-      gtags t
-
-instance ToTagsBy 'Custom Py.Call where
-  tags' t@Py.Call
-    { ann = loc@Loc { byteRange = range }
-    , function = Py.PrimaryExpression (Prj Py.Identifier { text = name })
-    } = do
-      src <- ask @Source
-      let sliced = slice src range
-      Tags.yield (Tag name Call loc (Tags.firstLine sliced) Nothing)
-      gtags t
-  tags' t@Py.Call{} = gtags t
-
-docComment :: Source -> (Py.CompoundStatement :+: Py.SimpleStatement) Loc -> Maybe Text
-docComment src (R1 (Py.SimpleStatement (Prj Py.ExpressionStatement { extraChildren = L1 (Prj (Py.Expression (Prj (Py.PrimaryExpression (Prj Py.String { ann }))))) :|_ }))) = Just (toText (slice src (byteRange ann)))
-docComment _ _ = Nothing
+gtags ::
+  ( Has (Reader Source) sig m,
+      Has (State Tags.LineIndices) sig m,
+    Has (Writer Tags.Tags) sig m,
+    Traversable1 ToTags t
+  ) =>
+  t Loc ->
+  m ()
+gtags = traverse1_ @ToTags (const (pure ())) tags
 
 
-gtags
-  :: ( Carrier sig m
-     , Member (Reader Source) sig
-     , Member (Writer Tags.Tags) sig
-     , Generic1 t
-     , Tags.GFoldable1 ToTags (Rep1 t)
-     )
-  => t Loc
-  -> m ()
-gtags = getAp . Tags.gfoldMap1 @ToTags (Ap . tags) . from1
-
-instance (Generic1 t, Tags.GFoldable1 ToTags (Rep1 t)) => ToTagsBy 'Generic t where
-  tags' = gtags
+instance ToTags Py.AliasedImport
+instance ToTags Py.ArgumentList
+-- instance ToTags Py.AssertStatement
+instance ToTags Py.Assignment
+instance ToTags Py.Attribute
+instance ToTags Py.AugmentedAssignment
+-- instance ToTags Py.Await
+instance ToTags Py.BinaryOperator
+instance ToTags Py.Block
+instance ToTags Py.BooleanOperator
+instance ToTags Py.BreakStatement
+-- instance ToTags Py.Call
+instance ToTags Py.Chevron
+-- instance ToTags Py.ClassDefinition
+instance ToTags Py.ComparisonOperator
+instance ToTags Py.CompoundStatement
+instance ToTags Py.ConcatenatedString
+instance ToTags Py.ConditionalExpression
+instance ToTags Py.ContinueStatement
+instance ToTags Py.DecoratedDefinition
+instance ToTags Py.Decorator
+instance ToTags Py.DefaultParameter
+-- instance ToTags Py.DeleteStatement
+instance ToTags Py.Dictionary
+instance ToTags Py.DictionaryComprehension
+instance ToTags Py.DictionarySplat
+instance ToTags Py.DottedName
+instance ToTags Py.ElifClause
+instance ToTags Py.Ellipsis
+instance ToTags Py.ElseClause
+instance ToTags Py.EscapeSequence
+instance ToTags Py.ExceptClause
+-- instance ToTags Py.ExecStatement
+instance ToTags Py.Expression
+instance ToTags Py.ExpressionList
+instance ToTags Py.ExpressionStatement
+instance ToTags Py.False
+instance ToTags Py.FinallyClause
+instance ToTags Py.Float
+instance ToTags Py.ForInClause
+instance ToTags Py.ForStatement
+instance ToTags Py.FormatExpression
+instance ToTags Py.FormatSpecifier
+-- instance ToTags Py.FunctionDefinition
+instance ToTags Py.FutureImportStatement
+instance ToTags Py.GeneratorExpression
+-- instance ToTags Py.GlobalStatement
+instance ToTags Py.Identifier
+instance ToTags Py.IfClause
+instance ToTags Py.IfStatement
+instance ToTags Py.ImportFromStatement
+instance ToTags Py.ImportPrefix
+instance ToTags Py.ImportStatement
+instance ToTags Py.Integer
+-- instance ToTags Py.Interpolation
+instance ToTags Py.KeywordArgument
+instance ToTags Py.Lambda
+instance ToTags Py.LambdaParameters
+instance ToTags Py.List
+instance ToTags Py.ListComprehension
+instance ToTags Py.ListSplat
+instance ToTags Py.Module
+instance ToTags Py.NamedExpression
+instance ToTags Py.None
+-- instance ToTags Py.NonlocalStatement
+instance ToTags Py.NotOperator
+instance ToTags Py.Pair
+instance ToTags Py.Parameter
+instance ToTags Py.Parameters
+instance ToTags Py.ParenthesizedExpression
+instance ToTags Py.PassStatement
+instance ToTags Py.PrimaryExpression
+-- instance ToTags Py.PrintStatement
+instance ToTags Py.RaiseStatement
+instance ToTags Py.RelativeImport
+instance ToTags Py.ReturnStatement
+instance ToTags Py.Set
+instance ToTags Py.SetComprehension
+instance ToTags Py.SimpleStatement
+instance ToTags Py.Slice
+instance ToTags Py.Subscript
+instance ToTags Py.True
+instance ToTags Py.TryStatement
+instance ToTags Py.Tuple
+instance ToTags Py.Type
+instance ToTags Py.TypeConversion
+instance ToTags Py.TypedDefaultParameter
+instance ToTags Py.TypedParameter
+instance ToTags Py.UnaryOperator
+instance ToTags Py.Variables
+instance ToTags Py.WhileStatement
+instance ToTags Py.WildcardImport
+instance ToTags Py.WithItem
+instance ToTags Py.WithStatement
+instance ToTags Py.Yield

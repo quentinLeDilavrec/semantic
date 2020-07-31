@@ -1,0 +1,9 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Array 
+          (Expression 
+            (String)) 
+          (Expression 
+            (String)))))))

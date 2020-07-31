@@ -1,4 +1,0 @@
-(Statements
-  (MemberAccess
-    (Identifier)
-    (Identifier)))

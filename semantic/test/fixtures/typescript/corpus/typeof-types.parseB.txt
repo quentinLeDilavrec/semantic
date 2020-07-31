@@ -1,0 +1,16 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (LexicalDeclaration 
+        (VariableDeclarator 
+          (Identifier "foo") 
+          (TypeAnnotation 
+            (TypeQuery 
+              (Identifier "Bar"))))))) 
+  (Statement 
+    (Declaration 
+      (LexicalDeclaration 
+        (VariableDeclarator 
+          (Identifier "bar") 
+          (TypeAnnotation 
+            (TypeIdentifier "G")))))))

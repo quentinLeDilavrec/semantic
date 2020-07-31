@@ -1,0 +1,10 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (LexicalDeclaration 
+        (VariableDeclarator 
+          (Identifier "x") 
+          (TypeAnnotation 
+            (IntersectionType 
+              (TypeIdentifier "A") 
+              (TypeIdentifier "B"))))))))

@@ -1,0 +1,37 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (FuncLiteral 
+                  (Block 
+                    (Statement 
+                      (ReturnStatement 
+                        (ExpressionList 
+                          (Expression 
+                            (IntLiteral "1")) 
+                          (Expression 
+                            (IntLiteral "2")))))) 
+                  (ParameterList 
+                    (ParameterDeclaration 
+                      (Type 
+                        (SimpleType 
+                          (TypeIdentifier "int")))) 
+                    (ParameterDeclaration 
+                      (Type 
+                        (SimpleType 
+                          (TypeIdentifier "int"))))) 
+                  (ParameterList 
+                    (ParameterDeclaration 
+                      (Identifier "s") 
+                      (Type 
+                        (SimpleType 
+                          (TypeIdentifier "string")))))))) 
+            (Identifier "s1"))))) 
+    (Identifier "main") 
+    (ParameterList)))

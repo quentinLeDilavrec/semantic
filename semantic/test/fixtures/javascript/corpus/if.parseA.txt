@@ -1,0 +1,17 @@
+(Program 
+  (Statement 
+    (IfStatement 
+      (Statement 
+        (StatementBlock 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (CallExpression 
+                  (Expression 
+                    (Identifier "log")) 
+                  (Arguments 
+                    (Expression 
+                      (Identifier "y"))))))))) 
+      (ParenthesizedExpression 
+        (Expression 
+          (Identifier "x"))))))

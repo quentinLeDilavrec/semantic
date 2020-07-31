@@ -1,0 +1,16 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Begin 
+          (Statement 
+            (MethodCall 
+              (ArgumentList) 
+              (Variable 
+                (Identifier "foo")))) 
+          (Else 
+            (Statement 
+              (MethodCall 
+                (ArgumentList) 
+                (Variable 
+                  (Identifier "bar"))))))))))

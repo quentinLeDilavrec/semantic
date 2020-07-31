@@ -1,0 +1,59 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "i1") 
+            (Type 
+              (SimpleType 
+                (InterfaceType 
+                  (MethodSpecList))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "i2") 
+            (Type 
+              (SimpleType 
+                (InterfaceType 
+                  (MethodSpecList 
+                    (QualifiedType 
+                      (TypeIdentifier "Reader") 
+                      (PackageIdentifier "io"))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "i3") 
+            (Type 
+              (SimpleType 
+                (InterfaceType 
+                  (MethodSpecList 
+                    (TypeIdentifier "i1") 
+                    (QualifiedType 
+                      (TypeIdentifier "Reader") 
+                      (PackageIdentifier "io")) 
+                    (MethodSpec 
+                      (SimpleType 
+                        (TypeIdentifier "error")) 
+                      (FieldIdentifier "SomeMethod") 
+                      (ParameterList 
+                        (ParameterDeclaration 
+                          (Identifier "s") 
+                          (Type 
+                            (SimpleType 
+                              (TypeIdentifier "string"))))))))))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "OptionA") 
+            (Type 
+              (SimpleType 
+                (InterfaceType 
+                  (MethodSpecList 
+                    (MethodSpec 
+                      (FieldIdentifier "public") 
+                      (ParameterList)))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

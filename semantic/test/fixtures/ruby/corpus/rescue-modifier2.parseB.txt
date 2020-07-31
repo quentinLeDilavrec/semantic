@@ -1,0 +1,13 @@
+(Program 
+  (Statement 
+    (RescueModifier 
+      (Statement 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "bar")))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Nil "nil")))))))

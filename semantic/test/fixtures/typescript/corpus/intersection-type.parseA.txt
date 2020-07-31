@@ -1,0 +1,10 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (LexicalDeclaration 
+        (VariableDeclarator 
+          (Identifier "x") 
+          (TypeAnnotation 
+            (UnionType 
+              (TypeIdentifier "Foo") 
+              (TypeIdentifier "Bar"))))))))

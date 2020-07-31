@@ -1,0 +1,24 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (CallExpression 
+          (Expression 
+            (MemberExpression 
+              (PropertyIdentifier "reduce") 
+              (Expression 
+                (This "this")))) 
+          (Arguments 
+            (Expression 
+              (Function 
+                (StatementBlock 
+                  (Statement 
+                    (ReturnStatement 
+                      (Expression 
+                        (MemberExpression 
+                          (PropertyIdentifier "a") 
+                          (Expression 
+                            (Identifier "b"))))))) 
+                (FormalParameters 
+                  (RequiredParameter 
+                    (Identifier "a")))))))))))

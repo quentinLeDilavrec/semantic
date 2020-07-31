@@ -1,0 +1,13 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (VariableDeclaration 
+        (VariableDeclarator 
+          (Expression 
+            (Identifier "foo")) 
+          (DestructuringPattern 
+            (ObjectPattern 
+              (AssignmentPattern 
+                (ShorthandPropertyIdentifier "y") 
+                (Expression 
+                  (Number "1"))))))))))

@@ -1,0 +1,14 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Array 
+          (Arg 
+            (Primary 
+              (Integer "1"))) 
+          (Arg 
+            (Primary 
+              (Integer "2"))) 
+          (Arg 
+            (Primary 
+              (Integer "3"))))))))

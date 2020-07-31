@@ -1,0 +1,17 @@
+(Module 
+  (SimpleStatement 
+    (FutureImportStatement 
+      (DottedName 
+        (Identifier "print_function")))) 
+  (SimpleStatement 
+    (FutureImportStatement 
+      (DottedName 
+        (Identifier "unicode_literals")) 
+      (DottedName 
+        (Identifier "division")))) 
+  (SimpleStatement 
+    (FutureImportStatement 
+      (AliasedImport 
+        (Identifier "pf") 
+        (DottedName 
+          (Identifier "print_function"))))))

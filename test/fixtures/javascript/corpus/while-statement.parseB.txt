@@ -1,8 +1,0 @@
-(Statements
-  (While
-    (Identifier)
-    (Statements
-      (Call
-        (Identifier)
-        (Empty))))
-  (Empty))

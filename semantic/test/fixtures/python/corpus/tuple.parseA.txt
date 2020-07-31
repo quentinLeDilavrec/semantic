@@ -1,0 +1,26 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Tuple 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a"))) 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b")))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Tuple 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "a"))) 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b"))) 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "c")))))))))

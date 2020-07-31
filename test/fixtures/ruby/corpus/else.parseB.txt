@@ -1,9 +1,0 @@
-(Statements
-  (Try
-    (Statements
-      (Send
-        (Identifier))
-      (Else
-        (Empty)
-        (Send
-          (Identifier))))))

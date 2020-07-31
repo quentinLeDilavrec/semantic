@@ -1,9 +1,0 @@
-(Statements
-  (Assignment
-    (Statements
-      (Identifier)
-      (Identifier))
-    (Array
-      (Integer)
-      (Integer)
-      (Integer))))

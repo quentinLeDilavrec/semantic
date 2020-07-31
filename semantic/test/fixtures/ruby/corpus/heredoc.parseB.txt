@@ -1,0 +1,15 @@
+(Program 
+  (Statement 
+    (MethodCall 
+      (ArgumentList) 
+      (Call 
+        (Primary 
+          (Lhs 
+            (MethodCall 
+              (ArgumentList 
+                (Arg 
+                  (Primary 
+                    (HeredocBeginning "<<-SQL")))) 
+              (Variable 
+                (Identifier "select"))))) 
+        (Identifier "join")))))

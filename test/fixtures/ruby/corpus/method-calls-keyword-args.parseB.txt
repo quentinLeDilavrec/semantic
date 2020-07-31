@@ -1,9 +1,0 @@
-(Statements
-  (Send
-    (Identifier)
-    (KeyValue
-      (SymbolElement)
-      (Boolean))
-    (KeyValue
-      (SymbolElement)
-      (Integer))))

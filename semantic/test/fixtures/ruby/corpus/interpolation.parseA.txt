@@ -1,0 +1,23 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Symbol 
+          (Interpolation 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "bar"))))))))))) 
+  (Statement 
+    (Arg 
+      (Primary 
+        (String 
+          (Interpolation 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "bar"))))))))))))

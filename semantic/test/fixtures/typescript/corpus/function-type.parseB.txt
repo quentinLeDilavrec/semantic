@@ -1,0 +1,9 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (LexicalDeclaration 
+        (VariableDeclarator 
+          (Identifier "x") 
+          (TypeAnnotation 
+            (ArrayType 
+              (TypeIdentifier "A"))))))))

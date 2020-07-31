@@ -1,0 +1,17 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (SimpleStatement 
+          (IncStatement 
+            (Expression 
+              (Identifier "foo"))))) 
+      (Statement 
+        (SimpleStatement 
+          (IncStatement 
+            (Expression 
+              (Identifier "x")))))) 
+    (Identifier "main") 
+    (ParameterList)))

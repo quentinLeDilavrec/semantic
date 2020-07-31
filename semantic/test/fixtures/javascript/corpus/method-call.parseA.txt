@@ -1,0 +1,15 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (CallExpression 
+          (Expression 
+            (MemberExpression 
+              (PropertyIdentifier "someMethod") 
+              (Expression 
+                (Identifier "object")))) 
+          (Arguments 
+            (Expression 
+              (Identifier "arg1")) 
+            (Expression 
+              (String))))))))

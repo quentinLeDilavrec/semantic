@@ -1,4 +1,0 @@
-(Statements
-  (LessThan
-    (Identifier)
-    (Identifier)))

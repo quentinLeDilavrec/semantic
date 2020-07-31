@@ -1,0 +1,24 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Until 
+          (Do) 
+          (Arg 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "foo"))))))))) 
+  (Statement 
+    (UntilModifier 
+      (Statement 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "foo")))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "done"))))))))

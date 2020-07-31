@@ -1,5 +1,0 @@
-(Statements
-  (File)
-  (Line)
-  (Send
-    (Identifier)))

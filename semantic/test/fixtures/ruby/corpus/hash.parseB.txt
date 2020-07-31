@@ -1,0 +1,21 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Hash 
+          (Pair 
+            (Arg 
+              (Primary 
+                (String))) 
+            (Symbol)) 
+          (Pair 
+            (Arg 
+              (Primary 
+                (Integer "2"))) 
+            (Symbol)) 
+          (Pair 
+            (Arg 
+              (Primary 
+                (Lhs 
+                  (True "true")))) 
+            (Symbol)))))))

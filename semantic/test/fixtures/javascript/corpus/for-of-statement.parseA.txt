@@ -1,0 +1,19 @@
+(Program 
+  (Statement 
+    (ForInStatement 
+      (Statement 
+        (StatementBlock 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (CallExpression 
+                  (Expression 
+                    (Identifier "process")) 
+                  (Arguments 
+                    (Expression 
+                      (Identifier "item"))))))))) 
+      (Identifier "item") 
+      (Expression 
+        (Identifier "items")))) 
+  (Statement 
+    (EmptyStatement ";")))

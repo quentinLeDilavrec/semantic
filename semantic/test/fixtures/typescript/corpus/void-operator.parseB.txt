@@ -1,0 +1,11 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (UnaryExpression 
+          (Token) 
+          (Expression 
+            (CallExpression 
+              (Expression 
+                (Identifier "c")) 
+              (Arguments))))))))

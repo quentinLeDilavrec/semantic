@@ -1,5 +1,0 @@
-(Statements
-  (Method
-    (Empty)
-    (Identifier)
-    (Statements)))

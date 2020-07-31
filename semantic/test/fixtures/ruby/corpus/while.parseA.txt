@@ -1,0 +1,24 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (While 
+          (Do) 
+          (Arg 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "foo"))))))))) 
+  (Statement 
+    (WhileModifier 
+      (Statement 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "foo")))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "run"))))))))

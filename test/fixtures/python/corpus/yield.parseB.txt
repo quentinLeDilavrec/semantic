@@ -1,5 +1,0 @@
-(Statements
-  (Yield
-    (Empty))
-  (Yield
-    (Empty)))

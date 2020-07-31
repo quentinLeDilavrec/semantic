@@ -1,0 +1,18 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (VarDeclaration 
+          (VarSpec 
+            (ExpressionList 
+              (Expression 
+                (IntLiteral "1")) 
+              (Expression 
+                (IntLiteral "2"))) 
+            (Identifier "one") 
+            (Token) 
+            (Identifier "two"))))) 
+    (Identifier "main") 
+    (ParameterList)))

@@ -1,0 +1,38 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (CallExpression 
+          (Expression 
+            (Identifier "someFunction")) 
+          (Arguments 
+            (Expression 
+              (Number "1")) 
+            (Expression 
+              (String)) 
+            (Expression 
+              (Function 
+                (StatementBlock 
+                  (Statement 
+                    (ExpressionStatement 
+                      (Expression 
+                        (CallExpression 
+                          (Expression 
+                            (MemberExpression 
+                              (PropertyIdentifier "log") 
+                              (Expression 
+                                (Identifier "console")))) 
+                          (Arguments 
+                            (Expression 
+                              (Identifier "a"))))))) 
+                  (Statement 
+                    (ReturnStatement 
+                      (Expression 
+                        (Identifier "b"))))) 
+                (FormalParameters 
+                  (RequiredParameter 
+                    (Identifier "a")) 
+                  (RequiredParameter 
+                    (Identifier "b"))))) 
+            (Expression 
+              (True "true"))))))))

@@ -1,0 +1,12 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Module 
+          (Constant "Foo") 
+          (Statement 
+            (Arg 
+              (Primary 
+                (Method 
+                  (MethodName 
+                    (Identifier "bar")))))))))))

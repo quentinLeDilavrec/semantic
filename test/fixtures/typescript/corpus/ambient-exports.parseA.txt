@@ -1,5 +1,0 @@
-(Statements
-  (DefaultExport
-    (Class
-      (TypeIdentifier)
-      (Statements))))

@@ -1,0 +1,15 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (StringArray 
+          (BareString) 
+          (BareString 
+            (Interpolation 
+              (Statement 
+                (Arg 
+                  (Primary 
+                    (Lhs 
+                      (Variable 
+                        (Identifier "b")))))))) 
+          (BareString))))))

@@ -1,0 +1,49 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "a") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "b")))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "a") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "b")))) 
+          (TypeSpec 
+            (TypeIdentifier "c") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "d")))))) 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "testRead") 
+            (Type 
+              (SimpleType 
+                (StructType 
+                  (FieldDeclarationList 
+                    (FieldDeclaration 
+                      (FieldIdentifier "cnt") 
+                      (TypeIdentifier "int")) 
+                    (FieldDeclaration 
+                      (FieldIdentifier "wantStr") 
+                      (TypeIdentifier "string")) 
+                    (FieldDeclaration 
+                      (FieldIdentifier "wantErr") 
+                      (TypeIdentifier "error"))))))) 
+          (TypeSpec 
+            (TypeIdentifier "testFnc") 
+            (Type 
+              (SimpleType 
+                (InterfaceType 
+                  (MethodSpecList)))))))) 
+    (Identifier "main") 
+    (ParameterList)))

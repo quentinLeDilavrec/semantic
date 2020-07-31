@@ -1,0 +1,10 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (BinaryExpression 
+          (Token) 
+          (Expression 
+            (Identifier "i")) 
+          (Expression 
+            (Identifier "j")))))))

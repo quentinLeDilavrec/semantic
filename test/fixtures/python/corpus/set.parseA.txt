@@ -1,6 +1,0 @@
-(Statements
-  (Hash)
-  (Set
-    (Integer)
-    (Integer)
-    (Integer)))

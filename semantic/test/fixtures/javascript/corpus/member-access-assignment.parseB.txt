@@ -1,0 +1,11 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (AssignmentExpression 
+          (MemberExpression 
+            (PropertyIdentifier "x") 
+            (Expression 
+              (Identifier "y"))) 
+          (Expression 
+            (Number "1")))))))

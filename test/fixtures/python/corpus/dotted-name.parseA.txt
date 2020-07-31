@@ -1,9 +1,0 @@
-(Statements
-  (MemberAccess
-    (Identifier)
-    (Identifier))
-  (MemberAccess
-    (MemberAccess
-      (Identifier)
-      (Identifier))
-    (Identifier)))

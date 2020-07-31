@@ -1,7 +1,0 @@
-(Statements
-  (Or
-    (Identifier)
-    (Identifier))
-  (And
-    (Identifier)
-    (Identifier)))

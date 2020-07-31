@@ -1,0 +1,5 @@
+(Program 
+  (Statement 
+    (ReturnStatement 
+      (Expression 
+        (Identifier "Foo")))))

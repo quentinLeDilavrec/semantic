@@ -1,0 +1,42 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (SimpleStatement 
+          (Expression 
+            (CallExpression 
+              (Expression 
+                (Identifier "a")) 
+              (ArgumentList 
+                (Expression 
+                  (Identifier "b")) 
+                (VariadicArgument 
+                  (Expression 
+                    (Identifier "c")))))))) 
+      (Statement 
+        (SimpleStatement 
+          (Expression 
+            (CallExpression 
+              (Expression 
+                (Identifier "b")) 
+              (ArgumentList 
+                (Expression 
+                  (Identifier "b")) 
+                (Expression 
+                  (Identifier "c"))))))) 
+      (Statement 
+        (SimpleStatement 
+          (Expression 
+            (CallExpression 
+              (Expression 
+                (Identifier "c")) 
+              (ArgumentList 
+                (Expression 
+                  (Identifier "b")) 
+                (VariadicArgument 
+                  (Expression 
+                    (Identifier "c"))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

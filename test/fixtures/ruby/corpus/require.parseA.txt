@@ -1,7 +1,0 @@
-(Statements
-  (Require
-    (TextElement))
-  (Send
-    (Identifier)
-    (Send
-      (Identifier))))

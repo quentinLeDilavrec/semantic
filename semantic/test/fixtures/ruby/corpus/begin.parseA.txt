@@ -1,0 +1,11 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Method 
+          (MethodName 
+            (Identifier "foo")) 
+          (Statement 
+            (Arg 
+              (Primary 
+                (Begin)))))))))

@@ -1,4 +1,0 @@
-(Statements
-  (TextElement)
-  (Statements
-    (TextElement)))

@@ -1,0 +1,6 @@
+(Statements
+  (AugmentedAssignment
+    (Plus
+      (Identifier)
+    { (Float)
+    ->(Float) })))

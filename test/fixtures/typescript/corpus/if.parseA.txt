@@ -1,9 +1,0 @@
-(Statements
-  (If
-    (Identifier)
-    (Statements
-      (Call
-        (Identifier)
-        (Identifier)
-        (Empty)))
-    (Empty)))

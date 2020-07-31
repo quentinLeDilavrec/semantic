@@ -1,0 +1,11 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Function 
+          (StatementBlock 
+            (Statement 
+              (ReturnStatement 
+                (Expression 
+                  (String))))) 
+          (FormalParameters))))))

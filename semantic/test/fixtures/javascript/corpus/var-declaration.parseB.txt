@@ -1,0 +1,12 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (VariableDeclaration 
+        (VariableDeclarator 
+          (Identifier "x")) 
+        (VariableDeclarator 
+          (Expression 
+            (Object)) 
+          (Identifier "y")) 
+        (VariableDeclarator 
+          (Identifier "z"))))))

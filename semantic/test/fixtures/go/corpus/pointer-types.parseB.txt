@@ -1,0 +1,28 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeSpec 
+            (TypeIdentifier "p1") 
+            (Type 
+              (SimpleType 
+                (PointerType 
+                  (Type 
+                    (SimpleType 
+                      (TypeIdentifier "int"))))))) 
+          (TypeSpec 
+            (TypeIdentifier "p2") 
+            (Type 
+              (SimpleType 
+                (PointerType 
+                  (Type 
+                    (SimpleType 
+                      (PointerType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "p3"))))))))))))) 
+    (Identifier "main") 
+    (ParameterList)))

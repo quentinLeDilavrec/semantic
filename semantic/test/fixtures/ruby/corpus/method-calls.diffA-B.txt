@@ -1,0 +1,39 @@
+(Statements
+  (Send
+  {-(Send
+    {-(Identifier)-})-}
+  { (Identifier)
+  ->(Identifier) })
+{-(Send
+  {-(Identifier)-}
+  {-(Send
+    {-(Identifier)-})-}
+  {-(Send
+    {-(Identifier)-})-}
+  {-(KeyValue
+    {-(SymbolElement)-}
+    {-(Integer)-})-}
+  {-(KeyValue
+    {-(SymbolElement)-}
+    {-(Integer)-})-})-}
+{-(Send
+  {-(Identifier)-}
+  {-(Send
+    {-(Identifier)-}
+    {-(Send
+      {-(Identifier)-})-})-})-}
+{-(Send
+  {-(Identifier)-}
+  {-(KeyValue
+    {-(Array)-}
+    {-(Integer)-})-}
+  {-(Send
+    {-(Identifier)-})-}
+  {-(Send
+    {-(Identifier)-})-}
+  {-(Function
+    {-(Empty)-}
+    {-(Identifier)-}
+    {-(Function
+      {-(Empty)-}
+      {-(Integer)-})-})-})-})

@@ -1,8 +1,0 @@
-(Statements
-  (ForEach
-    (Identifier)
-    (Identifier)
-    (Statements
-      (Call
-        (Identifier)
-        (Empty)))))

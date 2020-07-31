@@ -1,8 +1,0 @@
-(Statements
-  (Package
-    (Identifier))
-  (Function
-    (Identifier)
-    (Context
-      (Comment)
-      (Empty))))

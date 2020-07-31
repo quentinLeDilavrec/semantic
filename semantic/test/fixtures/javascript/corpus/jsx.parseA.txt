@@ -1,0 +1,23 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (FunctionDeclaration 
+        (StatementBlock 
+          (Statement 
+            (ReturnStatement 
+              (Expression 
+                (JsxElement 
+                  (JsxClosingElement 
+                    (Identifier "div")) 
+                  (JsxOpeningElement 
+                    (Identifier "div")) 
+                  (JsxText "\n    ") 
+                  (JsxElement 
+                    (JsxClosingElement 
+                      (Identifier "Foo")) 
+                    (JsxOpeningElement 
+                      (Identifier "Foo")) 
+                    (JsxText "hello")) 
+                  (JsxText "\n  ")))))) 
+        (Identifier "Something") 
+        (FormalParameters)))))

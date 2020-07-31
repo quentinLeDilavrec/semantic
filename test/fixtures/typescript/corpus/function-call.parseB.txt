@@ -1,7 +1,0 @@
-(Statements
-  (Call
-    (TypeIdentifier)
-    (Identifier)
-    (Identifier)
-    (TextElement)
-    (Empty)))

@@ -1,8 +1,0 @@
-(Statements
-  (SequenceExpression
-    (Assignment
-      (Identifier)
-      (Float))
-    (Assignment
-      (Identifier)
-      (Float))))

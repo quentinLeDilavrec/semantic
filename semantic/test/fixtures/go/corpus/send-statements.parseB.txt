@@ -1,0 +1,14 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (SimpleStatement 
+          (SendStatement 
+            (Expression 
+              (IntLiteral "6")) 
+            (Expression 
+              (Identifier "bar")))))) 
+    (Identifier "main") 
+    (ParameterList)))

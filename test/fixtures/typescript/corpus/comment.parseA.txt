@@ -1,4 +1,0 @@
-(Statements
-  (Context
-    (Comment)
-    (Empty)))

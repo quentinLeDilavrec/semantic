@@ -1,8 +1,0 @@
-(Statements
-  (Array
-    (Identifier))
-  (Array
-    (Integer)
-    (Integer))
-  (Array
-    (Identifier)))

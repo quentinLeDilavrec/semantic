@@ -1,7 +1,0 @@
-(Statements
-  (While
-    (Not
-      (Send
-        (Identifier)))
-    (Break
-      (Empty))))

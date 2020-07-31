@@ -1,0 +1,8 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (VariableDeclaration 
+        (VariableDeclarator 
+          (Expression 
+            (Number "1")) 
+          (Identifier "x"))))))

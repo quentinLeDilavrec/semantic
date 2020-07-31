@@ -1,5 +1,0 @@
-(Statements
-  (Array
-    (Integer)
-    (Integer)
-    (Integer)))

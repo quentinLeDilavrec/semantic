@@ -1,0 +1,14 @@
+(Module 
+  (SimpleStatement 
+    (AssertStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "c"))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "a"))))) 
+  (SimpleStatement 
+    (AssertStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "b"))))))

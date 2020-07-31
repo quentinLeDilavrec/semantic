@@ -1,6 +1,0 @@
-(Statements
-  (Complement
-    (Identifier))
-  (Negate
-    (Identifier))
-  (Identifier))

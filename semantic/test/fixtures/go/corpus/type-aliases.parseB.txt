@@ -1,0 +1,25 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeAlias 
+            (TypeIdentifier "nodes") 
+            (Type 
+              (SimpleType 
+                (SliceType 
+                  (Type 
+                    (SimpleType 
+                      (PointerType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "Node")))))))))) 
+          (TypeAlias 
+            (TypeIdentifier "Radian") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "radian"))))))) 
+    (Identifier "main") 
+    (ParameterList)))

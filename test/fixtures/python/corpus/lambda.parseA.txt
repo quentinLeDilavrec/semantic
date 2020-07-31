@@ -1,7 +1,0 @@
-(Statements
-  (Function
-    (Empty)
-    (Statements
-      (Plus
-        (Integer)
-        (Integer)))))

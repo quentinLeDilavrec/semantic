@@ -1,0 +1,45 @@
+(Module 
+  (SimpleStatement 
+    (PrintStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "c"))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "a"))))) 
+  (SimpleStatement 
+    (PrintStatement 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "b"))))) 
+  (SimpleStatement 
+    (PrintStatement 
+      (Expression 
+        (BooleanOperator 
+          (Token) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "0"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))))))) 
+  (SimpleStatement 
+    (PrintStatement 
+      (Expression 
+        (BooleanOperator 
+          (Token) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "0"))))) 
+      (Expression 
+        (BooleanOperator 
+          (Token) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "0"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))))))))

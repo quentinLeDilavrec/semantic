@@ -1,0 +1,25 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (TypeDeclaration 
+          (TypeAlias 
+            (TypeIdentifier "nodeList") 
+            (Type 
+              (SimpleType 
+                (SliceType 
+                  (Type 
+                    (SimpleType 
+                      (PointerType 
+                        (Type 
+                          (SimpleType 
+                            (TypeIdentifier "Node")))))))))) 
+          (TypeAlias 
+            (TypeIdentifier "Polar") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "polar"))))))) 
+    (Identifier "main") 
+    (ParameterList)))

@@ -1,0 +1,12 @@
+(Statements
+{+(TextElement)+}
+{+(Statements
+  {+(TextElement)+})+}
+{-(Send
+  {-(Context
+    {-(Statements
+      {-(TextElement)-})-}
+    {-(Send
+      {-(Identifier)-}
+      {-(TextElement)-})-})-}
+  {-(Identifier)-})-})

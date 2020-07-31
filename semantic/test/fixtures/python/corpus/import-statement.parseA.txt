@@ -1,0 +1,24 @@
+(Module 
+  (SimpleStatement 
+    (ImportStatement 
+      (DottedName 
+        (Identifier "a")) 
+      (AliasedImport 
+        (Identifier "c") 
+        (DottedName 
+          (Identifier "b"))))) 
+  (SimpleStatement 
+    (ImportStatement 
+      (AliasedImport 
+        (Identifier "d") 
+        (DottedName 
+          (Identifier "b") 
+          (Identifier "c"))) 
+      (DottedName 
+        (Identifier "e")))) 
+  (SimpleStatement 
+    (ImportStatement 
+      (DottedName 
+        (Identifier "a") 
+        (Identifier "b") 
+        (Identifier "c")))))

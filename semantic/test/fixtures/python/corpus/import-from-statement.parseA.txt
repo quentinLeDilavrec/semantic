@@ -1,0 +1,33 @@
+(Module 
+  (SimpleStatement 
+    (ImportFromStatement 
+      (DottedName 
+        (Identifier "b")) 
+      (DottedName 
+        (Identifier "a")))) 
+  (SimpleStatement 
+    (ImportFromStatement 
+      (DottedName 
+        (Identifier "b")) 
+      (DottedName 
+        (Identifier "c")) 
+      (DottedName 
+        (Identifier "a")))) 
+  (SimpleStatement 
+    (ImportFromStatement 
+      (DottedName 
+        (Identifier "a")) 
+      (WildcardImport "*"))) 
+  (SimpleStatement 
+    (ImportFromStatement 
+      (DottedName 
+        (Identifier "c")) 
+      (DottedName 
+        (Identifier "a") 
+        (Identifier "b")))) 
+  (SimpleStatement 
+    (ImportFromStatement 
+      (DottedName 
+        (Identifier "b")) 
+      (RelativeImport 
+        (ImportPrefix ".")))))

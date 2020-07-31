@@ -1,0 +1,120 @@
+(Statements
+  (Package
+    (Identifier))
+  (Function
+    (Identifier)
+    (Statements))
+  (Method
+    (Statements
+      (Identifier))
+  { (Identifier)
+  ->(Identifier) }
+    (Empty))
+  (Method
+    (Identifier)
+    (Statements
+      (Identifier)
+    { (Identifier)
+    ->(Identifier) })
+    (Identifier)
+    (Statements
+      (Identifier)
+    { (Identifier)
+    ->(Identifier) })
+    (Statements))
+  (Method
+    (Identifier)
+    (Statements
+      (Identifier)
+      (Pointer
+        (Identifier)))
+  { (Identifier)
+  ->(Identifier) }
+    (Return
+      (Call
+        (MemberAccess
+          (Identifier)
+          (Identifier))
+        (Plus
+        { (Times
+          {-(MemberAccess
+            {-(Identifier)-}
+            {-(Identifier)-})-}
+          {-(MemberAccess
+            {-(Identifier)-}
+            {-(Identifier)-})-})
+        ->(Plus
+          {+(Plus
+            {+(Call
+              {+(MemberAccess
+                {+(Identifier)+}
+                {+(Identifier)+})+}
+              {+(Statements
+                {+(MemberAccess
+                  {+(Identifier)+}
+                  {+(Identifier)+})+}
+                {+(Integer)+})+}
+              {+(Empty)+})+}
+            {+(MemberAccess
+              {+(Identifier)+}
+              {+(Identifier)+})+})+}
+          {+(Call
+            {+(MemberAccess
+              {+(Identifier)+}
+              {+(Identifier)+})+}
+            {+(Statements
+              {+(MemberAccess
+                {+(Identifier)+}
+                {+(Identifier)+})+}
+              {+(Integer)+})+}
+            {+(Empty)+})+}) }
+        { (Times
+          {-(MemberAccess
+            {-(Identifier)-}
+            {-(Identifier)-})-}
+          {-(MemberAccess
+            {-(Identifier)-}
+            {-(Identifier)-})-})
+        ->(MemberAccess
+          {+(Identifier)+}
+          {+(Identifier)+}) })
+        (Empty))))
+  (Method
+    (Statements
+      (AugmentedAssignment
+        (Times
+          (MemberAccess
+            (Identifier)
+            (Identifier))
+          (Identifier)))
+      (AugmentedAssignment
+        (Times
+          (MemberAccess
+            (Identifier)
+            (Identifier))
+          (Identifier))))
+    (Statements
+    { (Identifier)
+    ->(Identifier) }
+      (Pointer
+        (Identifier)))
+    (Identifier)
+    (Statements
+      (Identifier)
+    { (Identifier)
+    ->(Identifier) })
+    (Empty))
+  (Method
+    (Identifier)
+    (Statements
+      (Identifier)
+      (Pointer
+        (Identifier)))
+    (Identifier)
+    (Statements
+    { (Identifier)
+    ->(Identifier) }
+    { (Identifier)
+    ->(Identifier) }
+      (Identifier))
+    (Statements)))

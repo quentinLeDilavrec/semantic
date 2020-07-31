@@ -1,7 +1,0 @@
-(Statements
-  (Try
-    (Statements
-      (Send
-        (Identifier))
-      (Finally
-        (Statements)))))

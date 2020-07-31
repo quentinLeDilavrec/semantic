@@ -1,7 +1,0 @@
-(Statements
-  (Assignment
-    (Identifier)
-    (Plus
-      (Identifier)
-    { (Float)
-    ->(Float) })))

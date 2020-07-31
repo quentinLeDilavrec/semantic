@@ -1,5 +1,0 @@
-(Statements
-  (If
-    (Identifier)
-    (Identifier)
-    (Identifier)))

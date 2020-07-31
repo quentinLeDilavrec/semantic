@@ -1,0 +1,23 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (GeneratorFunctionDeclaration 
+        (StatementBlock 
+          (Statement 
+            (Declaration 
+              (VariableDeclaration 
+                (VariableDeclarator 
+                  (Expression 
+                    (Number "0")) 
+                  (Identifier "index"))))) 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (YieldExpression 
+                  (Expression 
+                    (UpdateExpression 
+                      (Token) 
+                      (Expression 
+                        (Identifier "i"))))))))) 
+        (Identifier "foo") 
+        (FormalParameters)))))

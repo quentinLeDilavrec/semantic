@@ -1,0 +1,52 @@
+(Module 
+  (CompoundStatement 
+    (WithStatement 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Assignment 
+              (ExpressionList 
+                (Expression 
+                  (PrimaryExpression 
+                    (Identifier "found")))) 
+              (ExpressionList 
+                (Expression 
+                  (PrimaryExpression 
+                    (False "False"))))))) 
+        (CompoundStatement 
+          (ForStatement 
+            (Block 
+              (SimpleStatement 
+                (ExpressionStatement 
+                  (Assignment 
+                    (ExpressionList 
+                      (Expression 
+                        (PrimaryExpression 
+                          (Identifier "found")))) 
+                    (ExpressionList 
+                      (Expression 
+                        (PrimaryExpression 
+                          (True "True")))))))) 
+            (Variables 
+              (PrimaryExpression 
+                (Identifier "line"))) 
+            (ExpressionList 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "lines"))))))) 
+      (WithItem 
+        (Expression 
+          (PrimaryExpression 
+            (Call 
+              (PrimaryExpression 
+                (Identifier "open")) 
+              (ArgumentList 
+                (Expression 
+                  (PrimaryExpression 
+                    (Identifier "nsfile"))) 
+                (Expression 
+                  (PrimaryExpression 
+                    (String))))))) 
+        (Expression 
+          (PrimaryExpression 
+            (Identifier "f")))))))

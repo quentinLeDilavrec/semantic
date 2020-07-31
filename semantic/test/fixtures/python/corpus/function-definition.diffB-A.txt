@@ -1,0 +1,50 @@
+(Statements
+  (Function
+  { (Identifier)
+  ->(Identifier) }
+  {-(RequiredParameter
+    {-(Identifier)-})-}
+  {-(Statements
+    {-(Identifier)-})-}
+    (Statements
+    { (Identifier)
+    ->(Identifier) }))
+  (Function
+    (Identifier)
+  {+(RequiredParameter
+    {+(Identifier)+})+}
+    (Statements
+    { (Identifier)
+    ->(Identifier) }))
+  (Function
+  { (Identifier)
+  ->(Identifier) }
+    (RequiredParameter
+    { (Identifier)
+    ->(Identifier) })
+  {+(Statements
+    {+(Identifier)+})+}
+    (Statements
+    { (Identifier)
+    ->(Identifier) }))
+{+(Function
+  {+(Identifier)+}
+  {+(Assignment
+    {+(Identifier)+}
+    {+(Identifier)+})+}
+  {+(Statements
+    {+(Identifier)+})+})+}
+  (Function
+    (Identifier)
+    (Annotation
+      (Assignment
+        (Identifier)
+      { (Integer)
+      ->(TextElement) })
+    { (Identifier)
+    ->(Identifier) })
+    (Statements
+    { (Identifier)
+    ->(Identifier) })
+    (Statements
+      (Identifier))))

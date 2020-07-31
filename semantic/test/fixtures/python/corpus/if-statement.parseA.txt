@@ -1,0 +1,44 @@
+(Module 
+  (CompoundStatement 
+    (IfStatement 
+      (ElifClause 
+        (Block 
+          (SimpleStatement 
+            (ExpressionStatement 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "a"))))) 
+          (SimpleStatement 
+            (ExpressionStatement 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "b")))))) 
+        (Expression 
+          (PrimaryExpression 
+            (Identifier "d")))) 
+      (ElseClause 
+        (Block 
+          (SimpleStatement 
+            (ExpressionStatement 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "x"))))) 
+          (SimpleStatement 
+            (ExpressionStatement 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "y"))))))) 
+      (Block 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "b"))))) 
+        (SimpleStatement 
+          (ExpressionStatement 
+            (Expression 
+              (PrimaryExpression 
+                (Identifier "c")))))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "a"))))))

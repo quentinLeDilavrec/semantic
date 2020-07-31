@@ -1,8 +1,0 @@
-(Statements
-  (Method
-    (Empty)
-    (Identifier)
-    (Identifier)
-    (Statements
-      (Send
-        (Identifier)))))

@@ -1,0 +1,17 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Function 
+          (TypeAnnotation 
+            (TypeIdentifier "int")) 
+          (StatementBlock 
+            (Statement 
+              (ExpressionStatement 
+                (Expression 
+                  (Identifier "arg1"))))) 
+          (FormalParameters 
+            (RequiredParameter 
+              (Identifier "arg1")) 
+            (RequiredParameter 
+              (Identifier "arg2"))))))))

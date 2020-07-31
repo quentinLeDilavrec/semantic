@@ -1,0 +1,18 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (Identifier "iota"))) 
+            (Identifier "zero")) 
+          (ConstSpec 
+            (Identifier "one")) 
+          (ConstSpec 
+            (Identifier "two"))))) 
+    (Identifier "main") 
+    (ParameterList)))

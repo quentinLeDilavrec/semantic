@@ -1,0 +1,23 @@
+(Program 
+  (Statement 
+    (Declaration 
+      (GeneratorFunctionDeclaration 
+        (StatementBlock 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (YieldExpression)))) 
+          (Statement 
+            (ExpressionStatement 
+              (Expression 
+                (YieldExpression 
+                  (Expression 
+                    (Identifier "arg2"))))))) 
+        (Identifier "generateNewStuff") 
+        (FormalParameters 
+          (RequiredParameter 
+            (Identifier "arg1")) 
+          (RequiredParameter 
+            (Identifier "arg2")))))) 
+  (Statement 
+    (EmptyStatement ";")))

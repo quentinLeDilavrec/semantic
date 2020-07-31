@@ -1,0 +1,19 @@
+(Module 
+  (SimpleStatement 
+    (ExecStatement 
+      (String) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "d"))))) 
+  (SimpleStatement 
+    (ExecStatement 
+      (String) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "b"))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "c"))))) 
+  (SimpleStatement 
+    (ExecStatement 
+      (String))))

@@ -1,0 +1,98 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Begin 
+          (Statement 
+            (Arg 
+              (Primary 
+                (Lhs 
+                  (Variable 
+                    (Identifier "foo")))))) 
+          (Rescue 
+            (Exceptions 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "Error"))))))) 
+          (Rescue 
+            (Exceptions 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "StandardError"))))) 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "TimeoutError")))))) 
+            (Then 
+              (Statement 
+                (Arg 
+                  (Primary 
+                    (Lhs 
+                      (Variable 
+                        (Identifier "x"))))))) 
+            (ExceptionVariable 
+              (Lhs 
+                (Variable 
+                  (Identifier "x"))))) 
+          (Else 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "z"))))))) 
+          (Ensure 
+            (Statement 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Identifier "y"))))))))))) 
+  (Statement 
+    (Arg 
+      (Primary 
+        (Method 
+          (MethodName 
+            (Identifier "foo")) 
+          (Rescue 
+            (Exceptions 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "Error"))))))) 
+          (Rescue 
+            (Exceptions 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "StandardError"))))) 
+              (Arg 
+                (Primary 
+                  (Lhs 
+                    (Variable 
+                      (Constant "TimeoutError")))))) 
+            (ExceptionVariable 
+              (Lhs 
+                (Variable 
+                  (Identifier "x"))))) 
+          (Else) 
+          (Ensure))))) 
+  (Statement 
+    (RescueModifier 
+      (Statement 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "bar")))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Nil "nil")))))))

@@ -1,0 +1,9 @@
+(Program 
+  (Statement 
+    (Return 
+      (ArgumentList 
+        (Arg 
+          (Primary 
+            (Lhs 
+              (Variable 
+                (Identifier "foo")))))))))

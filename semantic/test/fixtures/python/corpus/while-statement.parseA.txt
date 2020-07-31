@@ -1,0 +1,13 @@
+(Module 
+  (CompoundStatement 
+    (WhileStatement 
+      (Block 
+        (SimpleStatement 
+          (PassStatement "pass")) 
+        (SimpleStatement 
+          (BreakStatement "break")) 
+        (SimpleStatement 
+          (ContinueStatement "continue"))) 
+      (Expression 
+        (PrimaryExpression 
+          (Identifier "true"))))))

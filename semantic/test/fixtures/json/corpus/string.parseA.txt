@@ -1,0 +1,6 @@
+(Document 
+  (Value 
+    (Array 
+      (Value 
+        (String 
+          (StringContent))))))

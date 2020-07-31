@@ -1,0 +1,11 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (TernaryExpression 
+          (Expression 
+            (Identifier "case2")) 
+          (Expression 
+            (Identifier "case1")) 
+          (Expression 
+            (Identifier "condition")))))))

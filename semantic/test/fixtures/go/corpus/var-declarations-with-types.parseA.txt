@@ -1,0 +1,31 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (VarDeclaration 
+          (VarSpec 
+            (ExpressionList 
+              (Expression 
+                (IntLiteral "0"))) 
+            (Identifier "zero") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "int")))))) 
+      (Statement 
+        (VarDeclaration 
+          (VarSpec 
+            (ExpressionList 
+              (Expression 
+                (IntLiteral "1")) 
+              (Expression 
+                (IntLiteral "2"))) 
+            (Identifier "one") 
+            (Token) 
+            (Identifier "two") 
+            (Type 
+              (SimpleType 
+                (TypeIdentifier "uint64"))))))) 
+    (Identifier "main") 
+    (ParameterList)))

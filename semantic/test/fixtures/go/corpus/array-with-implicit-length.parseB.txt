@@ -1,0 +1,28 @@
+(SourceFile 
+  (PackageClause 
+    (PackageIdentifier "main")) 
+  (FunctionDeclaration 
+    (Block 
+      (Statement 
+        (ConstDeclaration 
+          (ConstSpec 
+            (ExpressionList 
+              (Expression 
+                (CompositeLiteral 
+                  (LiteralValue 
+                    (Element 
+                      (Expression 
+                        (IntLiteral "4"))) 
+                    (Element 
+                      (Expression 
+                        (IntLiteral "5"))) 
+                    (Element 
+                      (Expression 
+                        (IntLiteral "6")))) 
+                  (ImplicitLengthArrayType 
+                    (Type 
+                      (SimpleType 
+                        (TypeIdentifier "int"))))))) 
+            (Identifier "a1"))))) 
+    (Identifier "main") 
+    (ParameterList)))

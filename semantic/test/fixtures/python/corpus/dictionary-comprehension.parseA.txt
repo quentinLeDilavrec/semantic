@@ -1,0 +1,43 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (DictionaryComprehension 
+            (Pair 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "d"))) 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "c")))) 
+            (ForInClause 
+              (Variables 
+                (PrimaryExpression 
+                  (Identifier "b"))) 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "a"))))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (DictionaryComprehension 
+            (Pair 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "g"))) 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "d")))) 
+            (ForInClause 
+              (Variables 
+                (PrimaryExpression 
+                  (Identifier "e"))) 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "f")))) 
+            (IfClause 
+              (Expression 
+                (PrimaryExpression 
+                  (Identifier "d"))))))))))

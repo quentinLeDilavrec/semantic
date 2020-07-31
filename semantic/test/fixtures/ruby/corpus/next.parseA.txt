@@ -1,0 +1,17 @@
+(Program 
+  (Statement 
+    (Arg 
+      (Primary 
+        (For 
+          (Lhs 
+            (Variable 
+              (Identifier "x"))) 
+          (Do 
+            (Statement 
+              (Next))) 
+          (In 
+            (Arg 
+              (Primary 
+                (Lhs 
+                  (Variable 
+                    (Identifier "y")))))))))))

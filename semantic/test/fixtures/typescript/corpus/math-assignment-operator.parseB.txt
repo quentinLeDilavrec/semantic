@@ -1,0 +1,8 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (AugmentedAssignmentExpression 
+          (Identifier "x") 
+          (Expression 
+            (Number "2")))))))

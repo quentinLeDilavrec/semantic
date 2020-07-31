@@ -1,0 +1,14 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (NewExpression 
+          (Arguments 
+            (Expression 
+              (Number "1")) 
+            (Expression 
+              (String))) 
+          (MemberExpression 
+            (PropertyIdentifier "Klass") 
+            (Expression 
+              (Identifier "module"))))))))

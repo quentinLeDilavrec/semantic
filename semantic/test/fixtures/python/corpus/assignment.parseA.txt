@@ -1,0 +1,43 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Assignment 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "a")))) 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Assignment 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "a"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "b")))) 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "2"))))))) 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Assignment 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Identifier "a")))) 
+        (ExpressionList 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "1"))) 
+          (Expression 
+            (PrimaryExpression 
+              (Integer "2"))))))))

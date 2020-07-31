@@ -1,6 +1,0 @@
-(Statements
-  (LowPrecedenceAnd
-    (Send
-      (Identifier))
-    (Send
-      (Identifier))))

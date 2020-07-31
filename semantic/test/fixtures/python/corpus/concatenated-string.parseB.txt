@@ -1,0 +1,10 @@
+(Module 
+  (SimpleStatement 
+    (ExpressionStatement 
+      (Expression 
+        (PrimaryExpression 
+          (ConcatenatedString 
+            (String) 
+            (String) 
+            (String) 
+            (String)))))))

@@ -1,0 +1,7 @@
+(Program 
+  (Statement 
+    (ExpressionStatement 
+      (Expression 
+        (Regex 
+          (RegexFlags "gim") 
+          (RegexPattern "on[^/]afe"))))))

@@ -1,0 +1,39 @@
+(Program 
+  (Statement 
+    (Binary 
+      (Token) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "x"))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "y"))))))) 
+  (Statement 
+    (Binary 
+      (Token) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "x"))))) 
+      (Arg 
+        (Primary 
+          (Lhs 
+            (Variable 
+              (Identifier "y"))))))) 
+  (Statement 
+    (Assignment 
+      (Lhs 
+        (Variable 
+          (Identifier "x"))) 
+      (Arg 
+        (Unary 
+          (Arg 
+            (Primary 
+              (Lhs 
+                (Variable 
+                  (Identifier "y"))))))))))

@@ -1,6 +1,0 @@
-(Statements
-  (VariableDeclaration
-    (Assignment
-      (Empty)
-      (Identifier)
-      (Float))))

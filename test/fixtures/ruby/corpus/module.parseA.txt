@@ -1,7 +1,0 @@
-(Statements
-  (Module
-    (Identifier))
-  (Module
-    (ScopeResolution
-      (Identifier)
-      (Identifier))))
